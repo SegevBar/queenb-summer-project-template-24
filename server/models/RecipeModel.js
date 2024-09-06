@@ -7,10 +7,10 @@ const recipeSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
-    category: {
+    categories: [{
         type: String,
         required: true
-    },
+    }],
     imageUrl: {
         type: String,
         required: true
