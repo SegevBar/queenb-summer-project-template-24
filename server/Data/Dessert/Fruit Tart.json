@@ -1,0 +1,32 @@
+{
+    "title": "Fruit Tart",
+    "categories": ["Dessert"],
+    "imageUrl": "http://example.com/images/fruit-tart.jpg",
+    "ingredients": [
+      {
+        "ingredient": "Tart crust",
+        "quantity": "1 pre-baked"
+      },
+      {
+        "ingredient": "Pastry cream",
+        "quantity": "1 cup"
+      },
+      {
+        "ingredient": "Fresh fruit",
+        "quantity": "2 cups, assorted"
+      },
+      {
+        "ingredient": "Apricot jam",
+        "quantity": "2 tablespoons"
+      }
+    ],
+    "totalTime": 45,
+    "instructions": [
+      "Spread pastry cream into tart crust.",
+      "Arrange fresh fruit on top.",
+      "Heat apricot jam until liquid and brush over fruit.",
+      "Chill before serving."
+    ],
+    "createdBy": null
+}
+  

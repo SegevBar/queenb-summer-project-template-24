@@ -1,0 +1,42 @@
+{
+    "title": "Stuffed Mushrooms",
+    "categories": ["Appetizer"],
+    "imageUrl": "http://example.com/images/stuffed-mushrooms.jpg",
+    "ingredients": [
+      {
+        "ingredient": "Button mushrooms",
+        "quantity": "12, stems removed"
+      },
+      {
+        "ingredient": "Cream cheese",
+        "quantity": "1/2 cup"
+      },
+      {
+        "ingredient": "Parmesan cheese",
+        "quantity": "1/4 cup, grated"
+      },
+      {
+        "ingredient": "Garlic",
+        "quantity": "2 cloves, minced"
+      },
+      {
+        "ingredient": "Fresh parsley",
+        "quantity": "2 tablespoons, chopped"
+      },
+      {
+        "ingredient": "Olive oil",
+        "quantity": "2 tablespoons"
+      }
+    ],
+    "totalTime": 25,
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "In a bowl, mix cream cheese, Parmesan cheese, garlic, and parsley.",
+      "Fill mushroom caps with the mixture.",
+      "Place on a baking sheet and drizzle with olive oil.",
+      "Bake for 15-20 minutes until mushrooms are tender and tops are golden brown.",
+      "Serve warm."
+    ],
+    "createdBy": null
+}
+  

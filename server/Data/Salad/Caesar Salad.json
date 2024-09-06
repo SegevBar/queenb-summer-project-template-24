@@ -1,0 +1,32 @@
+{
+    "title": "Caesar Salad",
+    "categories": ["Salad"],
+    "imageUrl": "http://example.com/images/caesar-salad.jpg",
+    "ingredients": [
+      {
+        "ingredient": "Romaine lettuce",
+        "quantity": "1 head, chopped"
+      },
+      {
+        "ingredient": "Croutons",
+        "quantity": "1 cup"
+      },
+      {
+        "ingredient": "Parmesan cheese",
+        "quantity": "1/2 cup, grated"
+      },
+      {
+        "ingredient": "Caesar dressing",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "totalTime": 10,
+    "instructions": [
+      "In a large bowl, toss the romaine lettuce with Caesar dressing.",
+      "Add croutons and Parmesan cheese.",
+      "Toss gently to combine.",
+      "Serve immediately."
+    ],
+    "createdBy": null
+}
+  
