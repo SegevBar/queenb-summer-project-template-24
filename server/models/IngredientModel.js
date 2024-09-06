@@ -4,6 +4,7 @@ const ingredientSchema = new mongoose.Schema({
   ingredient: {
     type: String,
     required: true,
+    unique: true,
     trim: true
   },
   recipes: [{

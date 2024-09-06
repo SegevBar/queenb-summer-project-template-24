@@ -8,8 +8,7 @@ const recipeSchema = new mongoose.Schema({
         trim: true
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+        type: String,
         required: true
     },
     imageUrl: {

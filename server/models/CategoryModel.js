@@ -6,7 +6,11 @@ const categorySchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true
-  }
+  },
+  recipes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }]
 }, {
   timestamps: true
 });

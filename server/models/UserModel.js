@@ -36,7 +36,11 @@ const userSchema = new mongoose.Schema({
       message: 'Password must be at least 6 characters long, contain at least one lowercase letter, and cannot contain spaces'
     }
   },
-  favorites: [{
+  saved: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }],
+  created: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe'
   }]
