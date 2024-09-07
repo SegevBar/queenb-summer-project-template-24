@@ -1,0 +1,11 @@
+{
+    "Items":
+    [
+        "Appetizers", 
+        "Dessert",
+        "Main Course",
+        "Salad",
+        "Side Dish",
+        "Soup"
+    ]
+}
