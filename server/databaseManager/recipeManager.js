@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const Recipe = require('../models/domain/RecipeModel');
+const Recipe = require('../models/RecipeModel');
 
 class RecipeManager {
   static baseDir = `${process.cwd()}/Data`;

@@ -1,7 +1,7 @@
 {
     "title": "Tom Yum Soup",
     "categories": ["Soup"],
-    "imageUrl": "http://example.com/images/tom-yum-soup.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrC1tFrv-akVXcyTT5iry1LQ-oh8GiiGcLWA&s",
     "ingredients": [
       {
         "ingredient": "Shrimp",

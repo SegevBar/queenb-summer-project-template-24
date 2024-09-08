@@ -1,7 +1,7 @@
 {
     "title": "Caesar Salad",
     "categories": ["Salad"],
-    "imageUrl": "http://example.com/images/caesar-salad.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE3YkM8NmzPDzi7gzI7YWR6FOd4zANs6u0fQ&s",
     "ingredients": [
       {
         "ingredient": "Romaine lettuce",

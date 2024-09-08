@@ -1,7 +1,7 @@
 {
     "title": "Beef Tacos",
     "categories": ["Main Course"],
-    "imageUrl": "http://example.com/images/beef-tacos.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPXXjFlXthX3Jag6txkgxYPS8oJWvjisZsg&s",
     "ingredients": [
       {
         "ingredient": "Ground beef",
