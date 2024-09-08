@@ -1,41 +1,35 @@
 const fs = require('fs');
 const path = require('path');
 const Recipe = require('../models/domain/RecipeModel');
-function initializeRecipesDatabase() {
-  try {
 
-    const categoriesNames = this.getItems("");
+class RecipeManager {
+  // Add recipes data to database
+  static initializeRecipesDatabase() {
+    try {
+      const categoriesNames = RecipeManager.getItems("");
 
-    for (const categoryName of categoriesNames) {
-      const recipesNames = this.getItems(categoryName); //need to add Data.json file in any category folder with Items key and valus
+      for (const categoryName of categoriesNames) {
+        const recipesNames = RecipeManager.getItems(categoryName);
 
-      for (const recipeTitle of recipesNames) {
-        //const actionsNames = this.getItems(recipeTitle);
+        for (const recipeTitle of recipesNames) {
+          if (!RecipeManager.exists(recipeTitle)) {
+            const recipeToAdd = RecipeManager.getRecipe(recipeTitle);
 
-        if (!this._recipeRepository.exists(recipeTitle)) { //add exists method
-          let recipeToAdd = this.getRecipe(recipeTitle);
-
-          insertRecipe(recipeToAdd); //maybe insert await
-
-        } else {
-            //think what to do in this case
-          const recipeToCheck = this._recipeRepository.getRecipeByName(recipeTitle); //add getRecipeByName method
-
-          // this._recipeRepository.save(recipeToCheck);
-          //const actions = this.getAndSaveRecipeAction(actionsNames, recipeToCheck);
-          // recipeToCheck.actions = actions;
-          this._recipeRepository.save(recipeToCheck);
+            RecipeManager.insertRecipe(recipeToAdd); //maybe insert await
+          } else {
+            //think if we need this case
+          }
         }
       }
+    } catch (err) {
+      console.log(`An error occurred: ${err.message}`);
     }
-  } catch (ex) {
-    this._logger.error(`An error occurred: ${ex.message}`);
   }
-}
 
-function getItems(itemTitle) {
+  // Get items from json file
+  static getItems(itemTitle) {
     try {
-      const jsonFileData = this.readJson(itemTitle);
+      const jsonFileData = RecipeManager.readJson(itemTitle);
   
       if (jsonFileData === null) {
         return null;
@@ -44,15 +38,54 @@ function getItems(itemTitle) {
       const items = jsonFileData.Items;
       return Array.isArray(items) ? items : [];
   
-    } catch (ex) {
-      this._logger.error(`An error occurred: ${ex.message}`);
+    } catch (err) {
+      console.log(`An error occurred: ${err.message}`);
+
       return [];
     }
-}
+  }
 
-function getRecipe(recipeTitle) {
+  // Read json file
+  static readJson(itemTitle) {
+    const jsonPath = RecipeManager.createJsonPathForItem(itemTitle);
+    
+    return RecipeManager.readJsonFile(jsonPath);
+  }
+
+  // Create json path for item
+  static createJsonPathForItem(itemTitle) {
+    const jsonFileSuffix = 'Data.json';
+    const path = RecipeManager.createPathForItem(itemTitle);
+
+    return path.join(path, jsonFileSuffix);
+  }
+
+  // Create path for item
+  static createPathForItem(itemTitle) {
+    const baseDirectory = process.cwd();
+    const baseDir = path.join(baseDirectory, 'Data');
+
+    return itemTitle ? path.join(baseDir, itemTitle) : baseDir;
+  }
+
+  // Read json file
+  static readJsonFile(filePath) {
+    const jsonContent = fs.readFileSync(filePath, 'utf8');
+
+    return JSON.parse(jsonContent);
+  }
+
+  // Check if recipe exists already in database
+  static async exists(recipeTitle) {
+    const recipe = await Recipe.find(x => x.title === recipeTitle);
+
+    return recipe !== null;
+  }
+
+  // Get recipe object from json file
+  static getRecipe(recipeTitle) {
     try {
-      const jsonFileData = this.readJson(recipeTitle);
+      const jsonFileData = RecipeManager.readJson(recipeTitle);
   
       if (jsonFileData === null) {
         return null;
@@ -73,44 +106,23 @@ function getRecipe(recipeTitle) {
       });
       
       return recipe;
-    } catch (ex) {
-      this._logger.error(`An error occurred: ${ex.message}`);
+    } catch (err) {
+      console.log(`An error occurred: ${err.message}`);
+
       return null;
     }
   }
 
-function convertArrayToEnumerable(array) {
-  // In JavaScript, arrays are already iterable, so we just return the array
-  return array;
-}
-
-function readJson(itemTitle) {
-  const jsonPath = this.createJsonPathForItem(itemTitle);
-  return this.readJsonFile(jsonPath);
-}
-
-function createJsonPathForItem(itemTitle) {
-  const jsonFileSuffix = 'Data.json';
-  const path = this.createPathForItem(itemTitle);
-  return path.join(path, jsonFileSuffix);
-}
-
-function createPathForItem(itemTitle) {
-  const baseDirectory = process.cwd(); // Equivalent to AppDomain.CurrentDomain.BaseDirectory
-  const baseDir = path.join(baseDirectory, 'Data');
-  return itemTitle ? path.join(baseDir, itemTitle) : baseDir;
-}
-
-function readJsonFile(filePath) {
-  const jsonContent = fs.readFileSync(filePath, 'utf8');
-  return JSON.parse(jsonContent);
-}
-
-async function insertRecipe(recipe) {
+  // Insert recipe to database
+  static async insertRecipe(recipe) {
     try {
       const savedRecipe = await recipe.save();
-      console.log('Recipe saved successfully:', savedRecipe);
-    } catch (error) {
-      console.error('Error saving recipe:', error);
+      console.log('Recipe saved successfully:', savedRecipe.title);
+    } catch (err) {
+      console.error(`Error saving recipe "${recipe.title}":`, err);
+      // Optionally: throw err; // Re-throw if you want calling code to handle it
     }
   }
+}
+
+module.exports = RecipeManager;
