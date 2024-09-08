@@ -3,19 +3,23 @@ const path = require('path');
 const Recipe = require('../models/domain/RecipeModel');
 
 class RecipeManager {
+  static baseDir = `${process.cwd()}/Data`;
+  static jsonDataFileSuffix = 'Data.json';
+  static jsonFileSuffix = '.json';
+
   // Add recipes data to database
-  static initializeRecipesDatabase() {
+  static async initializeRecipesDatabase() {
     try {
-      const categoriesNames = RecipeManager.getItems("");
+      const categoriesTitles = RecipeManager.getCategories();
 
-      for (const categoryName of categoriesNames) {
-        const recipesNames = RecipeManager.getItems(categoryName);
+      for (const categoryTitle of categoriesTitles) {
+        const recipesTitles = RecipeManager.getRecipes(categoryTitle);
 
-        for (const recipeTitle of recipesNames) {
-          if (!RecipeManager.exists(recipeTitle)) {
-            const recipeToAdd = RecipeManager.getRecipe(recipeTitle);
+        for (const recipeTitle of recipesTitles) {
+          if (!await RecipeManager.exists(recipeTitle)) {
+            const recipeToInsert = RecipeManager.getRecipe(recipeTitle, categoryTitle);
 
-            RecipeManager.insertRecipe(recipeToAdd); //maybe insert await
+            await RecipeManager.insertRecipe(recipeToInsert); //maybe insert await
           } else {
             //think if we need this case
           }
@@ -25,16 +29,15 @@ class RecipeManager {
       console.log(`An error occurred: ${err.message}`);
     }
   }
-
-  // Get items from json file
-  static getItems(itemTitle) {
+  // Get categories from json file
+  static getCategories() {
     try {
-      const jsonFileData = RecipeManager.readJson(itemTitle);
+      const jsonPath = `${RecipeManager.baseDir}/${RecipeManager.jsonDataFileSuffix}`; //"Data/Data.json"
+      const jsonFileData = RecipeManager.readJsonFile(jsonPath);
   
       if (jsonFileData === null) {
         return null;
       }
-  
       const items = jsonFileData.Items;
       return Array.isArray(items) ? items : [];
   
@@ -45,48 +48,31 @@ class RecipeManager {
     }
   }
 
-  // Read json file
-  static readJson(itemTitle) {
-    const jsonPath = RecipeManager.createJsonPathForItem(itemTitle);
-    
-    return RecipeManager.readJsonFile(jsonPath);
-  }
+  // Get recipes from json file
+  static getRecipes(categoryTitle) {
+    try {
+      const jsonPath = `${RecipeManager.baseDir}/${categoryTitle}/${RecipeManager.jsonDataFileSuffix}`; //"Data/{categoryTitle}/Data.json"
+      const jsonFileData = RecipeManager.readJsonFile(jsonPath);
+  
+      if (jsonFileData === null) {
+        return null;
+      }
+      const items = jsonFileData.Items;
+      return Array.isArray(items) ? items : [];
+  
+    } catch (err) {
+      console.log(`An error occurred: ${err.message}`);
 
-  // Create json path for item
-  static createJsonPathForItem(itemTitle) {
-    const jsonFileSuffix = 'Data.json';
-    const path = RecipeManager.createPathForItem(itemTitle);
-
-    return path.join(path, jsonFileSuffix);
-  }
-
-  // Create path for item
-  static createPathForItem(itemTitle) {
-    const baseDirectory = process.cwd();
-    const baseDir = path.join(baseDirectory, 'Data');
-
-    return itemTitle ? path.join(baseDir, itemTitle) : baseDir;
-  }
-
-  // Read json file
-  static readJsonFile(filePath) {
-    const jsonContent = fs.readFileSync(filePath, 'utf8');
-
-    return JSON.parse(jsonContent);
-  }
-
-  // Check if recipe exists already in database
-  static async exists(recipeTitle) {
-    const recipe = await Recipe.find(x => x.title === recipeTitle);
-
-    return recipe !== null;
+      return [];
+    }
   }
 
   // Get recipe object from json file
-  static getRecipe(recipeTitle) {
+  static getRecipe(recipeTitle, categoryTitle) {
     try {
-      const jsonFileData = RecipeManager.readJson(recipeTitle);
-  
+      const jsonPath = `${RecipeManager.baseDir}/${categoryTitle}/${recipeTitle}${RecipeManager.jsonFileSuffix}`; //"Data/{categoryTitle}/{recipeTitle}.json"
+      const jsonFileData = RecipeManager.readJsonFile(jsonPath);
+    
       if (jsonFileData === null) {
         return null;
       }
@@ -102,7 +88,7 @@ class RecipeManager {
         })),
         totalTime: jsonFileData.totalTime || 0,
         instructions: jsonFileData.instructions || [],
-        createdBy: jsonFileData.createdBy || ''
+        createdBy: jsonFileData.createdBy || null
       });
       
       return recipe;
@@ -112,14 +98,36 @@ class RecipeManager {
       return null;
     }
   }
+  
+  // Read json file
+  static readJsonFile(filePath) {
+    const jsonContent = fs.readFileSync(filePath, 'utf8');
+
+    return JSON.parse(jsonContent);
+  }
+
+  // Check if recipe exists already in database
+  static async exists(recipeTitle) {
+    try {
+      const existingRecipe = await Recipe.findOne({ title: recipeTitle });
+      
+      return !!existingRecipe; // If existingRecipe is truthy (not null, undefined, 0, false, or an empty string), !!existingRecipe will return true
+    } catch (error) {
+      console.error('Error checking if recipe exists:', error);
+
+      return false;
+    }
+  }
 
   // Insert recipe to database
-  static async insertRecipe(recipe) {
+  static async insertRecipe(recipeToInsert) {
     try {
-      const savedRecipe = await recipe.save();
+      //const savedRecipe = await Recipe.insertOne(recipeToInsert);
+      const savedRecipe = await recipeToInsert.save();
+
       console.log('Recipe saved successfully:', savedRecipe.title);
     } catch (err) {
-      console.error(`Error saving recipe "${recipe.title}":`, err);
+      console.error(`Error saving recipe "${recipeToInsert.title}":`, err);
       // Optionally: throw err; // Re-throw if you want calling code to handle it
     }
   }

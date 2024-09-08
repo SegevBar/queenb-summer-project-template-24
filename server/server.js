@@ -28,9 +28,9 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
+  .then(async () => {
     // Initialize recipes database
-    RecipeManager.initializeRecipesDatabase();
+    await RecipeManager.initializeRecipesDatabase();
   })
   .then(() => {
     // listen for requests
