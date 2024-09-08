@@ -1,0 +1,28 @@
+/* .container {
+    padding: 20px;
+    border-radius: 8px;
+} */
+
+
+.recipe {
+    margin-top: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    height: 240x;
+    width: 225px;
+    float: inline-start;
+}
+
+.recipe p {
+    margin-top: -5px;
+    text-align: left;
+}
+
+img {
+    border: 1px solid #ccc;
+    height: 100px;
+    width: 100px;
+}

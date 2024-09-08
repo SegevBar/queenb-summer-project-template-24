@@ -12,33 +12,35 @@
   justify-content: space-between;
 }
 
-.appLogo {
-  height: 100px;
+.headline {
+  font-size: 2em;
+  margin: 20px;
+  color: #ffffff;
 }
 
-.appNav {
-  display: flex;
-  gap: 20px;
-}
+/* .categories {
+  background-color: #000;
+} */
+
 
 .appLink {
   color: white;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  margin: 2ch;
 }
 
 .appLink:hover {
   text-decoration: underline;
 }
 
-.main {
+/* .main {
   padding: 20px;
   background-color: #FFDCE8;
   height: 100vh;
-}
+} */
 
 .footer {
-  padding: 10px;
   background-color: #53474F;
   color: white;
   position: fixed;
@@ -46,4 +48,8 @@
   bottom: 0;
   text-align: center;
 }
-  
+
+.loginButton {
+  background-color: white;
+  border-radius: 3px;
+}
