@@ -1,26 +1,15 @@
-import React, { createContext, useState, useEffect } from 'react';
-import api from '../services/api';
+import React, { createContext, useState } from 'react';
 
 const DuckContext = createContext();
 
 const DuckProvider = ({ children }) => {
-    const [duck, setDuck] = useState(null);
+     const [duck]= useState(null);
 
-    const getRandomDuck = async () => {
-        try {
-            const response = await api.get('/rubberDucks/random');
-            setDuck(response.data);
-        } catch (error) {
-            console.error('Error fetching the random duck:', error);
-        }
-    };
-
-    useEffect(() => {
-        getRandomDuck();
-    }, []);
+    // Optionally, you can still manage duck state if you plan to update it some other way in the future.
+    // If duck-related functionality is no longer needed, you can remove duck state and context altogether.
 
     return (
-        <DuckContext.Provider value={{ duck, getRandomDuck }}>
+        <DuckContext.Provider value={{ duck }}>
             {children}
         </DuckContext.Provider>
     );

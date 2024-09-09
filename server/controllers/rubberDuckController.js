@@ -1,4 +1,4 @@
-const RubberDuck = require('../models/RubberDuckModel');
+//const RubberDuck = require('../models/RubberDuckModel');
 
 // get all ducks
 const getAllDucks = async (req, res) => {
