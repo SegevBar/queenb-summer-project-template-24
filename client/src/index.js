@@ -12,3 +12,4 @@ root.render(
     </DuckProvider>
   </React.StrictMode>
 );
+
