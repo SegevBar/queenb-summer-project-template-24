@@ -1,19 +1,19 @@
 .appNav {
-    background-color: #42383f;
     padding: 10px;
   }
 
 
 .appLink {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.4em;
-    margin: 30px;
-    border-radius: 3px;
-    padding: 7px;
+  font-family: 'EB Garamond';
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin: 30px;
+  border-radius: 3px;
+  padding: 7px;
 }
 
 .active {
-    font-weight: bold;
-    color: #ffffff;
+  font-weight: bold;
+  color: #ffffff;
   }
