@@ -24,6 +24,15 @@ const contentSchema = new mongoose.Schema({
       enum: ['Beginner', 'Medium', 'Advanced'],
       required: false
     },
+    thumbnail_url: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+        
+    },
     created_at: {
       type: Date,
       default: Date.now
