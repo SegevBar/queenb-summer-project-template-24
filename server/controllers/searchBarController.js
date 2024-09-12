@@ -15,7 +15,7 @@ const searchRecipes = async (req, res) => {
     const { key } = req.query;
     
     // Use user ID if logged in, otherwise use session ID or generate a guest ID
-    const cacheId = req.user ? req.user.id : (req.session.id || generateGuestId());
+    const cacheId = req.user ? req.user.id : (req.session ? req.session.id : generateGuestId());
     
     console.log(`User/Guest ${cacheId} searching for: "${key}"`);
     
@@ -23,7 +23,7 @@ const searchRecipes = async (req, res) => {
         let recipes;
         const userCache = searchCache.get(cacheId) || { lastKey: '', lastResults: [] };
         
-        if (key.includes(userCache.lastKey)) {
+        if (userCache.lastKey !== '' && !key.toLowerCase().startsWith(userCache.lastKey.toLowerCase())) {
             // If the new key contains the previous key, filter from previous results
             recipes = userCache.lastResults.filter(recipe => 
                 recipe.title.toLowerCase().includes(key.toLowerCase())
