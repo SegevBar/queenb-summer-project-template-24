@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-//const rubberDucksRoutes = require('./routes/rubberDucks')
 const RecipeManager = require('./databaseManager/recipeManager');
 const searchBarRoutes = require('./routes/searchBar');
+const recipesRoutes = require('./routes/Recipes')
 
 dotenv.config();
 
@@ -25,9 +25,10 @@ app.use((req, res, next) => {
   next()
 })
 
-// // Routes
+// Routes
 // app.use('/api/rubberDucks', rubberDucksRoutes)
 app.use('/api/searchBar', searchBarRoutes)
+app.use('/api/recipes', recipesRoutes)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -43,7 +44,3 @@ mongoose.connect(process.env.MONGO_URI)
   }).catch((err) => {
     console.log(err)
   });
-
-
-
-
