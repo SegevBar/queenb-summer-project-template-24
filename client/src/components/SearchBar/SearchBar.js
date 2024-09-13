@@ -1,3 +1,4 @@
+import styles from './SearchBar.module.css';
 import { useEffect, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
@@ -42,33 +43,33 @@ function SearchBar() {
     };
     search();
   }, [key]);
-    return (
-        <form>
-          <div className="search-Wrapper">
-            <button className="search-btn">
-              <FcSearch />
-            </button>
-            <div className="form-group">
-              <input 
-              type="text"
-              className="form-control"
-              placeholder="Searching..."
-              value={key}
-              onChange={(e) => setKey(e.target.value)}
-              />
-            </div>
-            {searchResult && searchResult.length > 0 && (
-              <div className="search-result">
-                {searchResult.map((recipe) => (
-                  <div className="search-item" key={recipe._id}>
-                    <h3 onClick={() => handleRecipeClick(recipe)}>{recipe.title}</h3>
-                  </div>
-                ))}
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <div className={styles.searchWrapper}>
+        <button type="button" className={styles.searchBtn}>
+          <FcSearch />
+        </button>
+        <div className={styles.formGroup}>
+          <input 
+          type="text"
+          className={styles.formControl}
+          placeholder="Search recipes..."
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+          />
+        </div>
+        {searchResult && searchResult.length > 0 && (
+          <div className={styles.searchResult}>
+            {searchResult.map((recipe) => (
+              <div className={styles.searchItem} key={recipe._id}>
+                <h3 onClick={() => handleRecipeClick(recipe)}>{recipe.title}</h3>
               </div>
-            )}
+            ))}
           </div>
-        </form>
-    )
+        )}
+      </div>
+    </form>
+  )
 }
 
 export default SearchBar;
