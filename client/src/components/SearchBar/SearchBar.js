@@ -21,7 +21,7 @@ function SearchBar() {
           setSearchResult([]);
           return;
         }
-        const response = await axiosInstance.get('/searchBar', {params: {key, limit: 5}});
+        const response = await axiosInstance.get('/searchBar', {params: {key}});
         setSearchResult(response.data);
         console.log(response.data);
       } catch (error) {

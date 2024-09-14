@@ -17,17 +17,19 @@ function App() {
           <h1 className={styles.headline}>Best Recipes Website</h1>
           <nav className={styles.user}>
             <button className={styles.addButton}>Add Recipe</button>
-            <Link to="/search" className={styles.appLink}>Search</Link>
             <Link to="/saved" className={styles.appLink}>Saved🤍</Link>
             <Link to="/" className={styles.appLink}>Logout</Link>
           </nav>
         </header>
 
-        <div className={styles.searchAndFilter}>
+        <div className={styles.searchBar}>
           <AppNav />
-          <span>
+          {/* <span>
             <input placeholder='Search Recipe'></input>
-          </span>
+          </span> */}
+          <div>
+            <Search />
+          </div>
         </div>
         
         
@@ -35,9 +37,9 @@ function App() {
         <main className={styles.main}>
           <div className={styles.layoutContainer}>
             <FilterBar />
-            <div className={styles.searchContainer}>
+            {/* <div className={styles.searchContainer}>
               <Search />
-            </div>
+            </div> */}
             <div className={styles.contentContainer}>
               <Routes>
                 <Route path="/" element={<Home />} />
