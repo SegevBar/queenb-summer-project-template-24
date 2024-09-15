@@ -1,5 +1,5 @@
 import styles from './SearchBar.module.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from '../../../services/api'
@@ -8,10 +8,17 @@ function SearchBar() {
   const [searchResult, setSearchResult] = useState([]);
   const [key, setKey] = useState("");
   const navigate = useNavigate(); //useNavigate hook, to navigate to a different page on click each recipe
+  const searchResultRef = useRef(null);
 
   const handleRecipeClick = (recipe) => {
     //navigate(`/recipe/${encodeURIComponent(recipe.title)}`);
     console.log(recipe.title);
+  };
+
+  const handleInputBlur = () => {
+    if (searchResultRef.current) {
+      searchResultRef.current.scrollTop = 0;
+    }
   };
 
   useEffect(() => {
@@ -43,6 +50,7 @@ function SearchBar() {
     };
     search();
   }, [key]);
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <div className={styles.searchWrapper}>
@@ -56,10 +64,11 @@ function SearchBar() {
           placeholder="Search recipes..."
           value={key}
           onChange={(e) => setKey(e.target.value)}
+          onBlur={handleInputBlur}
           />
         </div>
         {searchResult && searchResult.length > 0 && (
-          <div className={styles.searchResult}>
+          <div className={styles.searchResult} ref={searchResultRef}>
             {searchResult.map((recipe) => (
               <div className={styles.searchItem} key={recipe._id}>
                 <h3 onClick={() => handleRecipeClick(recipe)}>{recipe.title}</h3>
