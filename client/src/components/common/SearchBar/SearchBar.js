@@ -2,7 +2,7 @@ import styles from './SearchBar.module.css';
 import { useEffect, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from '../../services/api'
+import axiosInstance from '../../../services/api'
 
 function SearchBar() {
   const [searchResult, setSearchResult] = useState([]);
