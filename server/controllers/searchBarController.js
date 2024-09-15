@@ -23,14 +23,14 @@ const searchRecipes = async (req, res) => {
         let recipes;
         const userCache = searchCache.get(cacheId) || { lastKey: '', lastResults: [] };
         
-        if (userCache.lastKey !== '' && !key.toLowerCase().startsWith(userCache.lastKey.toLowerCase())) {
-            // If the new key contains the previous key, filter from previous results
+        if (userCache.lastKey !== '' && key.toLowerCase().startsWith(userCache.lastKey.toLowerCase())) {
+            // If the new key starts with the previous key, filter from previous results
             recipes = userCache.lastResults.filter(recipe => 
                 recipe.title.toLowerCase().includes(key.toLowerCase())
             );
             console.log(`Filtered from previous results. Found ${recipes.length} matching recipes`);
         } else {
-            // If the new key doesn't contain the previous key, search from RecipeModel
+            // If the new key doesn't start with the previous key, search from RecipeModel
             // This regex will match the key anywhere in the title
             // The $options: 'i' flag makes the search case-insensitive
             recipes = await Recipe.find({
@@ -38,6 +38,15 @@ const searchRecipes = async (req, res) => {
             });
             console.log(`Searched database. Found ${recipes.length} matching recipes`);
         }
+        
+        // Sort the recipes: prefix matches first, then contains matches
+        recipes.sort((a, b) => {
+            const aStartsWith = a.title.toLowerCase().startsWith(key.toLowerCase());
+            const bStartsWith = b.title.toLowerCase().startsWith(key.toLowerCase());
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return 0;
+        });
         
         // Update the cache with the new search results
         searchCache.set(cacheId, {
