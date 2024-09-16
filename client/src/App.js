@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext'; 
+import AppNav from './components/common/AppNav/AppNav';
+import FilterBar from './components/common/FilterBar/FilterBar';
 
 function App() {
   const { logout } = useLogout();
@@ -18,7 +20,7 @@ function App() {
           <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>Home</Link>
-            
+                        
             {user ? ( // Check if `user` exists
               <>
                 {/* Show the user's email and Logout button when the user is logged in */}
@@ -34,25 +36,33 @@ function App() {
             )}
           </nav>
         </header>
+
+        <div className={styles.searchAndFilter}>
+          <AppNav />
+          <span>
+            <input placeholder='Search Recipe'></input>
+          </span>
+        </div>
+        
+        
+
         <main className={styles.main}>
-          <Routes>
-            <Route 
-              path="/"
-              element={<Home />}
-            />
-            <Route 
-              path="/login" 
-              element={<Login />} 
-            />
-            <Route 
-              path="/signup" 
-              element={<Signup />} 
-            />
-          </Routes>
+          <div className={styles.layoutContainer}>
+            <FilterBar />
+            <div className={styles.contentContainer}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
+              <footer className={styles.footer}>
+                <p>&copy; 2024 My App</p>
+              </footer>
+            </div>
+            
+
+
+          </div>
         </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
-        </footer>
+
       </div>
     </BrowserRouter>
   );

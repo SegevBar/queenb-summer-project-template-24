@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const rubberDucksRoutes = require('./routes/rubberDucks')
-const userRoutes = require('./routes/user')
+const RecipeManager = require('./databaseManager/recipeManager');
+const recipesRoutes = require('./routes/Recipes')
 
 dotenv.config();
 
@@ -30,6 +30,10 @@ app.use('/api/user', userRoutes)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
+  .then(async () => {
+    // Initialize recipes database
+    await RecipeManager.initializeRecipesDatabase();
+  })
   .then(() => {
     // listen for requests
     app.listen(PORT, () => {
@@ -38,7 +42,3 @@ mongoose.connect(process.env.MONGO_URI)
   }).catch((err) => {
     console.log(err)
   });
-
-
-
-

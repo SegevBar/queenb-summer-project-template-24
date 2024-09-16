@@ -1,7 +1,7 @@
 {
     "title": "Greek Salad",
     "categories": ["Salad"],
-    "imageUrl": "http://example.com/images/greek-salad.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDpyoNWqhqHQ1i0t33n1NTFpGkrvccC6m2kA&s",
     "ingredients": [
       {
         "ingredient": "Cucumber",
