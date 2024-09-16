@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
-import Search from './components/common/SearchBar/SearchBar';
+import SearchBar from './components/common/SearchBar/SearchBar';
 import styles from './styles/App.module.css';
 import AppNav from './components/common/AppNav/AppNav';
 import FilterBar from './components/common/FilterBar/FilterBar';
@@ -24,11 +24,8 @@ function App() {
 
         <div className={styles.searchBar}>
           <AppNav />
-          {/* <span>
-            <input placeholder='Search Recipe'></input>
-          </span> */}
           <div>
-            <Search />
+            <SearchBar />
           </div>
         </div>
         
@@ -37,13 +34,9 @@ function App() {
         <main className={styles.main}>
           <div className={styles.layoutContainer}>
             <FilterBar />
-            {/* <div className={styles.searchContainer}>
-              <Search />
-            </div> */}
             <div className={styles.contentContainer}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />} />
               </Routes>
               <footer className={styles.footer}>
                 <p>&copy; 2024 My App</p>

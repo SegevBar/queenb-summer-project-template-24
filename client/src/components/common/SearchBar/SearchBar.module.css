@@ -11,12 +11,19 @@
 }
 
 .searchBtn {
+    /* position: absolute; */
+    left: 10px;
+    top: 50%;
+    /* transform: translateY(-50%); */
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
     padding: 10px 15px;
     color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .formGroup {
@@ -28,9 +35,9 @@
     padding: 12px 20px;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
-    /* font-family: 'EB Garamond', serif; */
+    font-family: 'EB Garamond', serif;
 }
 
 .searchResult {
@@ -82,12 +89,14 @@
 }
 
 .searchResult::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #48b5d3;
+    /* background: #888; */
     border-radius: 4px;
 }
 
 .searchResult::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    /* background: #555; */
+    background: #1fb3ed;
 }
 
 .highlight {
