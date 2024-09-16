@@ -21,6 +21,15 @@ function SearchBar() {
     }
   };
 
+  const highlightMatch = (text, key) => {
+    if (!key) return text;
+    const parts = text.split(new RegExp(`(${key})`, 'gi'));
+    return parts.map((part, index) => 
+      part.toLowerCase() === key.toLowerCase() ? 
+        <span key={index} className={styles.highlight}>{part}</span> : part
+    );
+  };
+
   useEffect(() => {
     const search = async () => {
       try {
@@ -71,7 +80,9 @@ function SearchBar() {
           <div className={styles.searchResult} ref={searchResultRef}>
             {searchResult.map((recipe) => (
               <div className={styles.searchItem} key={recipe._id}>
-                <h3 onClick={() => handleRecipeClick(recipe)}>{recipe.title}</h3>
+                <h3 onClick={() => handleRecipeClick(recipe)}>
+                  {highlightMatch(recipe.title, key)}
+                </h3>
               </div>
             ))}
           </div>
