@@ -49,6 +49,7 @@ const Signup = () => {
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         required
+        autoComplete="username"
       />
 
       <label>Password:</label>
@@ -57,6 +58,7 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         required
+        autoComplete="new-password"
       />
 
       <button disabled={isLoading}>Sign up</button>

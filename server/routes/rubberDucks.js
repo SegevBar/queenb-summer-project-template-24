@@ -7,7 +7,12 @@ const { createDuck,
     getRandomDuck,
  } = require('../controllers/rubberDuckController')
 
-const router = express.Router()
+ //require the middleware
+const requireAuth = require('../middleware/requireAuth')
+
+ const router = express.Router()
+
+ router.use(requireAuth)
 
 /**
  * Read Only Permission Routes
