@@ -7,8 +7,10 @@ import axiosInstance from '../../../services/api'
 function SearchBar() {
   const [searchResult, setSearchResult] = useState([]);
   const [key, setKey] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   const navigate = useNavigate(); //useNavigate hook, to navigate to a different page on click each recipe
   const searchResultRef = useRef(null);
+  const latestKeyRef = useRef("");
 
   const handleRecipeClick = (recipe) => {
     //navigate(`/recipe/${encodeURIComponent(recipe.title)}`);
@@ -30,34 +32,45 @@ function SearchBar() {
     );
   };
 
-  useEffect(() => {
-    const search = async () => {
-      try {
-        if (!key.trim()) {
-          setSearchResult([]);
-          return;
-        }
-        const response = await axiosInstance.get('/searchBar', {params: {key}});
-        setSearchResult(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error fetching search results:', error);
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error('Response data:', error.response.data);
-          console.error('Response status:', error.response.status);
-          console.error('Response headers:', error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error('No response received:', error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error('Error setting up request:', error.message);
-        }
+  const performSearch = async (searchKey) => {
+    setIsSearching(true);
+    try {
+      if (!searchKey.trim()) {
+        setSearchResult([]);
+        return;
       }
-    };
-    search();
+      const response = await axiosInstance.get('/searchBar', {params: {key: searchKey}});
+      setSearchResult(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error setting up request:', error.message);
+      }
+    } finally {
+      setIsSearching(false);
+      // Check if the key has changed during the search
+      if (latestKeyRef.current !== searchKey) {
+        performSearch(latestKeyRef.current);
+      }
+    }
+  };
+
+  useEffect(() => {
+    latestKeyRef.current = key;
+    if (!isSearching) {
+      performSearch(key);
+    }
   }, [key]);
 
   return (
