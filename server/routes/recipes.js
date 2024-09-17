@@ -5,7 +5,11 @@ const {
     deleteRecipe
  } = require('../controllers/RecipesController')
 
+const requireAuth = require('../middleware/requireAuth')
+
 const router = express.Router()
+
+router.use(requireAuth)
 
 // GET all recipes
 router.get('/', getAllRecipes)

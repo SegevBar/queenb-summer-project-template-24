@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
+import styles from './auth-form.css'
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -16,7 +17,8 @@ const Signup = () => {
   }
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <div className="auth-container">
+    <form className={styles.authForm} onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
 
       <label>First Name:</label>
@@ -64,6 +66,7 @@ const Signup = () => {
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
     </form>
+  </div>
   );
 };
 
