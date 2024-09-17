@@ -10,7 +10,8 @@ function App() {
         <header className={styles.appHeader}>
           <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
-            <Link to="/" className={styles.appLink}>Home</Link>
+            <Link to="/" className={styles.appLink}>Log in</Link>
+            <Link to="/" className={styles.appLink}>Sign up</Link>
           </nav>
         </header>
         <main className={styles.main}>
