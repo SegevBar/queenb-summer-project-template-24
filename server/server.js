@@ -4,6 +4,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 // const RecipeManager = require('./databaseManager/recipeManager');
 const recipesRoutes = require('./routes/recipes')
+const recipesFilterRoutes = require('./routes/recipesFilterRoute')
+
 
 dotenv.config();
 
@@ -26,6 +28,10 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/recipes', recipesRoutes)
+
+app.use('/api/recipes/filter', recipesFilterRoutes);  
+
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
