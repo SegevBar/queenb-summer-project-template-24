@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const Recipe = require('../models/RecipeModel');
+const Category = require('../models/CategoryModel');
+const Ingredient = require('../models/IngredientModel');
 
 class RecipeManager {
   static baseDir = `${process.cwd()}/Data`;
@@ -13,21 +15,33 @@ class RecipeManager {
       const categoriesTitles = RecipeManager.getCategories();
 
       for (const categoryTitle of categoriesTitles) {
+        let category = await RecipeManager.checkIfCategoryExists();
+        
         const recipesTitles = RecipeManager.getRecipes(categoryTitle);
+        let isCategoryChanged = false;
 
         for (const recipeTitle of recipesTitles) {
           if (!await RecipeManager.exists(recipeTitle)) {
             const recipeToInsert = RecipeManager.getRecipe(recipeTitle, categoryTitle);
-
-            await RecipeManager.insertRecipe(recipeToInsert); //maybe insert await
-          } else {
-            //think if we need this case
+            const savedRecipe = await RecipeManager.insertRecipe(recipeToInsert);
+          
+            // Add the recipe ID to the category's recipes array
+            category.recipes.push(savedRecipe._id);
+            isCategoryChanged = true;
+            console.log(`Recipe: ${recipeToInsert.title} is going to pushed to ${recipeToInsert.title}'s recipes`);
+            
+            await RecipeManager.initializeIngredients(recipeToInsert, ingredient.ingredient, savedRecipe._id);
           }
         }
+        if (isCategoryChanged) {
+          // Save the updated category with the new recipes
+          await category.save();
+          console.log('Category saved successfully:', category.title);
+        }
+        }
+      } catch (err) {
+        console.log(`An error occurred: ${err.message}`);
       }
-    } catch (err) {
-      console.log(`An error occurred: ${err.message}`);
-    }
   }
   // Get categories from json file
   static getCategories() {
@@ -46,6 +60,19 @@ class RecipeManager {
 
       return [];
     }
+  }
+
+  // Check if category exists and create it if not
+  static async checkIfCategoryExists() {
+    let category = await Category.findOne({ title: categoryTitle });
+
+    if (!category) {
+      category = new Category({ title: categoryTitle });
+      await category.save(); // Save the new category
+      console.log('Category title saved successfully:', category.title);
+    }
+    
+    return category;
   }
 
   // Get recipes from json file
@@ -129,6 +156,21 @@ class RecipeManager {
     } catch (err) {
       console.error(`Error saving recipe "${recipeToInsert.title}":`, err);
       // Optionally: throw err; // Re-throw if you want calling code to handle it
+    }
+  }
+  // Initialize ingredients
+  static async initializeIngredients(recipeToInsert, ingredientName, idRecipe) {
+    for (const ingredient of recipeToInsert.ingredients) {
+      let existingIngredient = await Ingredient.findOne({ ingredient: ingredientName });
+      if (!existingIngredient) {
+        existingIngredient = new Ingredient({ ingredient: ingredientName });
+        await existingIngredient.save(); // Save the new ingredient
+        console.log('Ingredient name saved successfully:', existingIngredient.ingredient);
+      }
+      // Add the recipe ID to the ingredient's recipes array
+      existingIngredient.recipes.push(idRecipe);
+      await existingIngredient.save(); // Save the updated ingredient
+      console.log(`Recipe: ${recipeToInsert.title} was pushed to ${ingredientName}'s recipes and saved successfully`);
     }
   }
 }
