@@ -31,7 +31,6 @@ const contentSchema = new Schema({
     description: {
         type: String,
         required: false
-        
     },
     
   },{timestamps: true})
