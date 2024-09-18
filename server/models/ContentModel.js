@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const contentSchema = new mongoose.Schema({
+const contentSchema = new Schema({
     name: {
       type: String,
       required: true
@@ -33,14 +33,7 @@ const contentSchema = new mongoose.Schema({
         required: false
         
     },
-    created_at: {
-      type: Date,
-      default: Date.now
-    },
-    updated_at: {
-      type: Date,
-      default: Date.now
-    }
-  });
+    
+  },{timestamps: true})
   
 module.exports = mongoose.model('Content', contentSchema);
