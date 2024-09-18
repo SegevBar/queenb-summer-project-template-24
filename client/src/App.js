@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
+import FilterBar from './components/FilterBar/FilterBar';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
             <Link to="/" className={styles.appLink}>Home</Link>
           </nav>
         </header>
+
+        <FilterBar/>
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
