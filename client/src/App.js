@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage'
 import styles from './styles/App.module.css'
 import Login from './pages/login'
@@ -39,9 +39,9 @@ function App() {
         </header>
         <main className={styles.main}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
