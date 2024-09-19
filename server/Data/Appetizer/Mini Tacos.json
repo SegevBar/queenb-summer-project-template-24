@@ -1,7 +1,7 @@
 {
     "title": "Mini Tacos",
     "categories": ["Appetizer"],
-    "imageUrl": "http://example.com/images/mini-tacos.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_dX5y6jHAmN0YqzKhxETfDYjsgFXp3Z8oeg&s",
     "ingredients": [
       {
         "ingredient": "Mini taco shells",

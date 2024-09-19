@@ -3,7 +3,7 @@ const {
     getAllRecipes,
     addRecipe,
     deleteRecipe
- } = require('../controllers/recipesController')
+ } = require('../controllers/RecipesController')
 
 const router = express.Router()
 

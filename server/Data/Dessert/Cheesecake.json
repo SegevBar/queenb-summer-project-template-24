@@ -1,7 +1,7 @@
 {
     "title": "Cheesecake",
     "categories": ["Dessert"],
-    "imageUrl": "http://example.com/images/cheesecake.jpg",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0EPsDVK93eDmmO1c31dc47SOWQrYhqEWGTQ&s",
     "ingredients": [
       {
         "ingredient": "Graham cracker crumbs",
