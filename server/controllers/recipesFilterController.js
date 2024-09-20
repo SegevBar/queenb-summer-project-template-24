@@ -7,6 +7,13 @@ const getRecepiesByIngredients = async (req, res) => {
 
   try {
     const { ingredients, category } = req.query;  
+    // Filter only by category - No ingredients were provided
+    if (!ingredients) { 
+      const recipes = await Recipe.find();
+      const filteredRecipes = recipes.filter(recipe => recipe.categories.includes(category));
+      return res.status(200).json({ recipes: filteredRecipes });
+    }
+    //Ingredients are provided
     const ingredientsList = ingredients.split(','); 
   
     const foundIngredients = await Ingredient.find({ ingredient: { $in: ingredientsList } }).populate('recipes');
@@ -35,7 +42,7 @@ const getRecepiesByIngredients = async (req, res) => {
 
     let finalRecipes = filteredRecipes;
     if (category) {
-      finalRecipes = filteredRecipes.filter(recipe => recipe.categories.includes(category)); //todo - check query
+      finalRecipes = filteredRecipes.filter(recipe => recipe.categories.includes(category)); 
     }
 
     return res.status(200).json({ recipes: finalRecipes });
