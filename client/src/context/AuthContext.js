@@ -26,10 +26,9 @@ export const AuthContextProvider = ({ children }) => {
     }, [])
 
     console.log('AuthContext state: ', state)
-
-    return (<AuthContextProvider value={{ ...state, dispatch }}>
+    return (<AuthContext.Provider value={{ ...state, dispatch }}>
         {children}
-    </AuthContextProvider>
+    </AuthContext.Provider>
     )
 
 }
