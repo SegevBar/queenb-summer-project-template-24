@@ -15,7 +15,7 @@ class RecipeManager {
       const categoriesTitles = RecipeManager.getCategories();
 
       for (const categoryTitle of categoriesTitles) {
-        let category = await RecipeManager.checkIfCategoryExists();
+        let category = await RecipeManager.checkIfCategoryExists(categoryTitle);
         
         const recipesTitles = RecipeManager.getRecipes(categoryTitle);
         let isCategoryChanged = false;
@@ -28,9 +28,9 @@ class RecipeManager {
             // Add the recipe ID to the category's recipes array
             category.recipes.push(savedRecipe._id);
             isCategoryChanged = true;
-            console.log(`Recipe: ${recipeToInsert.title} is going to pushed to ${recipeToInsert.title}'s recipes`);
+            console.log(`Recipe: ${recipeToInsert.title} is going to pushed to ${categoryTitle}'s recipes`);
             
-            await RecipeManager.initializeIngredients(recipeToInsert, ingredient.ingredient, savedRecipe._id);
+            await RecipeManager.initializeIngredients(recipeToInsert, savedRecipe._id);
           }
         }
         if (isCategoryChanged) {
@@ -38,10 +38,10 @@ class RecipeManager {
           await category.save();
           console.log('Category saved successfully:', category.title);
         }
-        }
-      } catch (err) {
-        console.log(`An error occurred: ${err.message}`);
       }
+    } catch (err) {
+      console.log(`An error occurred: ${err.message}`);
+    }
   }
   // Get categories from json file
   static getCategories() {
@@ -63,7 +63,7 @@ class RecipeManager {
   }
 
   // Check if category exists and create it if not
-  static async checkIfCategoryExists() {
+  static async checkIfCategoryExists(categoryTitle) {
     let category = await Category.findOne({ title: categoryTitle });
 
     if (!category) {
@@ -153,24 +153,28 @@ class RecipeManager {
       const savedRecipe = await recipeToInsert.save();
 
       console.log('Recipe saved successfully:', savedRecipe.title);
+
+      return savedRecipe;
     } catch (err) {
       console.error(`Error saving recipe "${recipeToInsert.title}":`, err);
       // Optionally: throw err; // Re-throw if you want calling code to handle it
+
+      throw err; // Added to re-throw the error
     }
   }
   // Initialize ingredients
-  static async initializeIngredients(recipeToInsert, ingredientName, idRecipe) {
+  static async initializeIngredients(recipeToInsert, idRecipe) {
     for (const ingredient of recipeToInsert.ingredients) {
-      let existingIngredient = await Ingredient.findOne({ ingredient: ingredientName });
+      let existingIngredient = await Ingredient.findOne({ ingredient: ingredient.ingredient }); // Use ingredient.ingredient
       if (!existingIngredient) {
-        existingIngredient = new Ingredient({ ingredient: ingredientName });
+        existingIngredient = new Ingredient({ ingredient: ingredient.ingredient }); // Use ingredient.ingredient
         await existingIngredient.save(); // Save the new ingredient
         console.log('Ingredient name saved successfully:', existingIngredient.ingredient);
       }
       // Add the recipe ID to the ingredient's recipes array
       existingIngredient.recipes.push(idRecipe);
       await existingIngredient.save(); // Save the updated ingredient
-      console.log(`Recipe: ${recipeToInsert.title} was pushed to ${ingredientName}'s recipes and saved successfully`);
+      console.log(`Recipe: ${recipeToInsert.title} was pushed to ${ingredient.ingredient}'s recipes and saved successfully`); // Use ingredient.ingredient
     }
   }
 }
