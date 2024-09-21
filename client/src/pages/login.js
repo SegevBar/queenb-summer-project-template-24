@@ -21,12 +21,16 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
             />
+            <br />
+            <br />
             <label>Password:</label>
             <input
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
+            <br />
+            <br />
 
 
             <button disabled={isLoading}>Log in</button>

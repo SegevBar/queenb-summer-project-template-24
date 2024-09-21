@@ -18,13 +18,14 @@
 
 .appNav {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 .appLink {
   color: white;
   text-decoration: none;
   font-size: 1.2em;
+
 }
 
 .appLink:hover {
@@ -45,4 +46,13 @@
   width: 100%;
   bottom: 0;
   text-align: center;
+}
+
+.input {
+  width: 100%;
+  /* Full width of parent container */
+  max-width: 300px;
+  /* Set a maximum width for the input fields */
+  padding: 8px;
+  /* Add padding for better appearance */
 }

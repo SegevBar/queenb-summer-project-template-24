@@ -32,7 +32,7 @@ function App() {
             {user && (
               <div>
                 <span>{user.email}</span>
-                <button onclick={handleClick}>Log out</button>
+                <button onClick={handleClick}>Log out</button>
               </div>
             )}
           </nav>

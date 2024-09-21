@@ -23,6 +23,11 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(cors({
+  origin: 'http://localhost:3000' // Allow frontend access
+}));
+
+
 // Routes
 app.use('/api/user', userRoutes)
 
