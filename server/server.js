@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const RecipeManager = require('./databaseManager/recipeManager');
-const recipesRoutes = require('./routes/Recipes')
+const recipesRoutes = require('./routes/recipes')
 
 dotenv.config();
 
@@ -20,6 +20,7 @@ app.use(cors({
 }));
 
 app.use((req, res, next) => {
+  console.log('Requested path:', req.path); //delete this
   console.log(req.path, req.method)
   next()
 })
