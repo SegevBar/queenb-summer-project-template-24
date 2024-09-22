@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
+import styles from '../styles/App.module.css'
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -36,7 +37,7 @@ const Signup = () => {
 
 
             <button disabled={isLoading}>Sign up</button>
-            {error && <div className="error">{error}</div>}
+            {error && <div className={styles.error}>{error}</div>}
 
         </form>
     )

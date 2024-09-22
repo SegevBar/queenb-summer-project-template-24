@@ -61,25 +61,15 @@
 
 .error {
   color: red;
-  /* Makes the text red to indicate an error */
   font-weight: bold;
-  /* Makes the text bold */
   background-color: #f8d7da;
-  /* Light red background for visibility */
   border: 1px solid red;
-  /* Adds a red border */
   padding: 10px;
-  /* Adds padding to give some space inside the box */
   border-radius: 5px;
-  /* Rounds the corners for a smoother look */
-  margin-top: 10px;
-  /* Adds space between the input field and the error message */
+  margin: 10px auto;
+  /* Center horizontally and add margin on top */
   text-align: center;
-  /* Centers the error message text */
   width: 100%;
-  /* Make the error message take the full width of the form */
   max-width: 400px;
-  /* Optionally limit the max width */
   display: block;
-  /* Ensure it shows up as a block */
 }
