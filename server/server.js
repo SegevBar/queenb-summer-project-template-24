@@ -4,11 +4,12 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const RecipeManager = require('./databaseManager/recipeManager');
 const recipesRoutes = require('./routes/Recipes')
+const userRoutes = require('./routes/user');
 
 dotenv.config();
 
 // Constants
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // Create Express server
 const app = express();
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/recipes', recipesRoutes)
+app.use('/api/user', userRoutes)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
