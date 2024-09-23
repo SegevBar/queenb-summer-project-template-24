@@ -5,16 +5,18 @@ const Recipelist = (props) => {
     const title = props.title;
 
     return (
-        <div className="recipe-list">
-            <h2>{title}</h2>
-            {recipes.map((recipe) => (
-                <div className="recipe-preview" key={recipe._id}>
-                    <Link to={`/recipes/${recipe._id}`}> {/* Use recipe._id here */}
-                        <h2>{recipe.title}</h2>
-                        <p>Written by {recipe.userName}</p>
-                    </Link>
-                </div>
-            ))}
+        <div className="recipe-list-container">
+            <h2 className="recipe-title">{title}</h2>
+            <div className="recipe-list">
+                {recipes.map((recipe) => (
+                    <div className="recipe-preview" key={recipe._id}>
+                        <Link to={`/recipes/${recipe._id}`}>
+                            <h3>{recipe.title}</h3>
+                            <p>Written by {recipe.userName}</p>
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
