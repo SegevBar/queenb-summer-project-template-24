@@ -22,9 +22,7 @@ app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
-app.use(cors({
-  origin: 'http://localhost:3000' // Allow frontend access
-}));
+
 // Routes
 app.use('/api/recipes', recipesRoutes);
   // Updated to 'recipes'
