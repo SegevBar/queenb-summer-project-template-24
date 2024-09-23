@@ -30,9 +30,9 @@ function App() {
               </div>
             )}
             {user && (
-              <div>
+              <div className={styles.userSection}>
                 <span>{user.email}</span>
-                <button onClick={handleClick}>Log out</button>
+                <button onClick={handleClick} className={styles.logoutButton}>Log out</button>
               </div>
             )}
           </nav>

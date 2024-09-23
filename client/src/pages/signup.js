@@ -16,30 +16,30 @@ const Signup = () => {
     }
 
     return (
-        <form className="signup" onSubmit={handleSubmit}>
-            <h3>Sign Up</h3>
-            <label>Email:</label>
-            <input
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <br />
-            <br />
-            <label>Password:</label>
-            <input
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
-            <br />
-            <br />
+        <div className={styles.formWrapper}>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <h3 className={styles.formHeading}>Sign Up</h3>
+                <label>Email:</label>
+                <input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    className={styles.inputField}
+                />
 
+                <label>Password:</label>
+                <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    className={styles.inputField}
+                />
 
-            <button disabled={isLoading}>Sign up</button>
-            {error && <div className={styles.error}>{error}</div>}
+                <button className={styles.button} disabled={isLoading}>Sign up</button>
+                {error && <div className={styles.error}>{error}</div>}
 
-        </form>
+            </form>
+        </div>
     )
 }
 
