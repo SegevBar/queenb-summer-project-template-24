@@ -1,28 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Home from './pages/HomePage/HomePage';
-import styles from './styles/App.module.css';
+import './styles/global.css';
+import Navbar from './pages/Navbar';
+import HomePage from './pages/HomePage/HomePage';
+import RecipeDetails from './RecipeDetails'; // Ensure this path is correct
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className={styles.app}>
-        <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
-          <nav className={styles.appNav}>
-            <Link to="/" className={styles.appLink}>Home</Link>
-          </nav>
-        </header>
-        <main className={styles.main}>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* Use the element prop for rendering */}
+            <Route path="/recipes/:id" element={<RecipeDetails />} />
+            <Route path="/" element={<HomePage />} />
           </Routes>
-        </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
-        </footer>
+        </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

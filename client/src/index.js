@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'; // From react-dom/client in React 18
 import './styles/global.css'; 
 import App from './App';
-import { DuckProvider } from './context/DuckContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')); // Create root
 root.render(
+  // Wrapping with StrictMode
   <React.StrictMode>
-    <DuckProvider>
       <App /> 
-    </DuckProvider>
   </React.StrictMode>
 );
