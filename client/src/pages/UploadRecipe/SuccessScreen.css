@@ -1,0 +1,45 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Main Success Screen Container */
+  .success-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe6eb; /* Light pink background */
+    text-align: center;
+  }
+  
+  /* Success Message Text */
+  .success-container h2 {
+    font-size: 28px;
+    color: #ff8fa0; /* Pink text color */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for text */
+  }
+  
+  /* Checkmark Container */
+  .checkmark-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 5px solid #4CAF50; /* Green border around checkmark */
+    border-radius: 50%; /* Circular border */
+    background-color: white; /* White background inside circle */
+  }
+  
+  /* Checkmark Symbol */
+  .checkmark {
+    font-size: 100px; /* Large checkmark */
+    color: #4CAF50; /* Green color for checkmark */
+    font-weight: bold;
+  }
+  
