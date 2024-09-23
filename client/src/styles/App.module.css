@@ -69,10 +69,10 @@
 }
 
 .error {
-  color: red;
-  font-weight: bold;
-  background-color: #f8d7da;
-  border: 1px solid red;
+  color: #b33a3a;
+  font-weight: 500;
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
   padding: 10px;
   border-radius: 5px;
   margin: 10px 0;
@@ -81,6 +81,7 @@
   box-sizing: border-box;
   max-width: 400px;
   display: block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .button {
@@ -143,7 +144,7 @@
 
 
 .form {
-  background-color: #fff;
+  background-color: rgb(254, 244, 251);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
