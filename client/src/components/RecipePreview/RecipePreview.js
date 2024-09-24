@@ -3,8 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import styles from './RecipePreview.module.css';
 
 
+// get a partial list of the ingredients to display
 function getIngredients(recipe) {
-    return recipe.ingredients.map(ingredient => ingredient.ingredient).join(', ')
+    let result = [];
+    let totalLength = 0;
+    let fullListIncluded = true;
+
+    for (let ingredient of recipe.ingredients) {
+        let ingredientName = ingredient.ingredient;
+        // Check if adding this ingredient would exceed the character limit
+        if (totalLength + ingredientName.length + result.length <= 50) {
+            result.push(ingredientName);
+            totalLength += ingredientName.length + result.length;
+        } else {
+            fullListIncluded = false;
+            break;
+        }
+    }
+
+    if (!fullListIncluded) {
+        // If not all ingredients are included and there's enough space, add " .."
+        if (totalLength + 3 <= 50) {
+            return result.join(', ') + ' ..';
+        } else {
+            return result.join(', ');
+        }
+    }
+
+    return result.join(', ');
 }
 
 const RecipePreview = ({ recipe }) => {

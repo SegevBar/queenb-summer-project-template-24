@@ -25,11 +25,11 @@ const CategoryPage = () => {
 
 
 return (
-    <div className={styles.home}>
+    <div className={styles.category}>
       {error && <p className={styles.error}>{error}</p>}
       {recipes.length > 0 ? (
         recipes.map(recipe => (
-          <RecipePreview key={recipe._id} recipe={recipe} />
+          <RecipePreview className={styles.recipe} key={recipe._id} recipe={recipe} />
         ))
       ) : (
         <p>No recipes found in this category</p>
