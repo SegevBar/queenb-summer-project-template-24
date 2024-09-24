@@ -1,34 +1,50 @@
-/* App.module.css */
 .app {
   text-align: center;
 }
 
 .appHeader {
   background-color: #53474F;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 30px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.appLogo {
-  height: 100px;
-}
-
 .appNav {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftNav {
+  /* Home button on the left */
+}
+
+.rightNav {
+  display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .appLink {
-  color: white;
   text-decoration: none;
-  font-size: 1.2em;
 }
 
-.appLink:hover {
-  text-decoration: underline;
+/* Buttons with shades of pink */
+.homeButton, .loginButton, .uploadButton {
+  background-color: #FF85B3; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+
+.homeButton:hover, .loginButton:hover, .uploadButton:hover {
+  background-color: #FF5A8A; 
 }
 
 .main {
@@ -46,4 +62,3 @@
   bottom: 0;
   text-align: center;
 }
-  

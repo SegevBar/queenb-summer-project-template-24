@@ -1,14 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
-const Recipe = require('./models/Recipe'); // Make sure your Recipe model is correctly imported
+const Recipe = require('./models/Recipe'); 
 const app = express();
 
 // Middleware to handle JSON requests
 app.use(express.json());
 
-// MongoDB connection (replace 'mydatabase' with your actual database name)
-mongoose.connect('mongodb+srv://shirly212:Shirly98@cluster0.agqih.mongodb.net/mydatabase?retryWrites=true&w=majority', {
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -41,9 +42,9 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
       title,
       level,
       type,
-      ingredients: ingredients.split(','), // Split comma-separated ingredients
+      ingredients: ingredients.split(','),
       instructions,
-      tags: tags.split(','), // Split comma-separated tags
+      tags: tags.split(','), 
       imageFile: req.file ? req.file.filename : null, // Save file name if uploaded
       videoLink,
       publicationDate,
@@ -54,7 +55,7 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
     await recipe.save();
     res.status(201).json({ message: 'Recipe uploaded successfully!' });
   } catch (error) {
-    console.error('Error saving recipe:', error); // Log the error
+    console.error('Error saving recipe:', error);
     res.status(500).json({ error: 'Failed to upload recipe' });
   }
 });
