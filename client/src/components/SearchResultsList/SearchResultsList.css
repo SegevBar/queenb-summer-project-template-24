@@ -1,0 +1,109 @@
+.results-list {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+/* Container for the search results */
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+/* Each individual recipe card */
+.recipe-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Recipe title styling */
+.recipe-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Recipe details (level, type, etc.) */
+.recipe-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.recipe-details strong {
+  color: #333;
+}
+
+/* Ingredients list */
+.recipe-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.recipe-ingredients span {
+  background-color: #eef;
+  color: #0077b6;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+}
+
+/* Instructions section */
+.recipe-instructions {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* No results message styling */
+.no-results-message {
+  font-size: 1.5rem;
+  color: #af6969;
+  text-align: center;
+  padding: 10px;
+  background-color: none;
+  border-radius: 1px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .search-results-list {
+    padding: 10px;
+  }
+
+  .recipe-card {
+    padding: 15px;
+  }
+
+  .recipe-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .recipe-details p {
+    font-size: 0.9rem;
+  }
+}

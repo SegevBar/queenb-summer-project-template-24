@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const rubberDucksRoutes = require('./routes/rubberDucks')
+const recipeRoutes = require('./routes/recipes');
 
 dotenv.config();
 
@@ -14,9 +14,10 @@ const app = express();
 
 // Middleware
 app.use(express.json())
-app.use(cors({
-  origin: process.env.CLIENT_URL
-}));
+// app.use(cors({
+//   origin: process.env.CLIENT_URL
+// }));
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use('/api/rubberDucks', rubberDucksRoutes)
+app.use('/api/recipes', recipeRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -36,7 +37,5 @@ mongoose.connect(process.env.MONGO_URI)
   }).catch((err) => {
     console.log(err)
   });
-
-
 
 
