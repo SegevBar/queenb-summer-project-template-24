@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage'
 import styles from './styles/App.module.css'
 import Login from './pages/login'
+import AddContent from './pages/addContent';
 import { useLogout } from './hooks/useLogout'
 import { useAuthContext } from './hooks/useAuthContext';
 import Signup from './pages/signup'
@@ -39,9 +40,10 @@ function App() {
         </header>
         <main className={styles.main}>
           <Routes>
-            <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/addContent" element={user ? <AddContent /> : <Navigate to="/login" />} />
           </Routes>
         </main>
         <footer className={styles.footer}>

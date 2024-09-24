@@ -3,15 +3,19 @@ import { useAuthContext } from './useAuthContext'
 
 
 export const useLogin = () => {
+    // states for arror and loading. initially set to null
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
+    // accessing the dispatch function from the AuthContext using useAuthContext
     const { dispatch } = useAuthContext();
 
 
     const login = async (email, password) => {
+        // set initial loading and error states
         setIsLoading(true)
         setError(null)
 
+        // making a login request
         const response = await fetch('http://localhost:9000/api/user/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

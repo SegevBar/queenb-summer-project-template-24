@@ -9,7 +9,7 @@ dotenv.config();
 // Constants
 const PORT = process.env.PORT;
 
-// Create Express server
+// Create Express application
 const app = express();
 
 // Middleware
@@ -23,9 +23,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(cors({
-  origin: 'http://localhost:3000' // Allow frontend access
-}));
+
 
 
 // Routes
