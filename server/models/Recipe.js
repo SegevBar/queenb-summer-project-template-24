@@ -36,7 +36,7 @@ const RecipeSchema = new mongoose.Schema({
   userName: {
     type: String,
   },
-});
+}, { collection: 'recipes' }); // Explicitly set the collection name
 
 // Create the Recipe model from the schema
 const Recipe = mongoose.model('Recipe', RecipeSchema);
