@@ -12,11 +12,11 @@ const Navbar = () => {
             />
             {/* Main title of the website */}
             <h1>The Recipe Website</h1>
-            {/* Link component used for internal navigation (without full page reload) */}
-            {/* Links to the home page */}
-            <Link to="/">Home</Link>
-            {/* Links to the create recipe page */}
-            <Link to="/create">New Recipe</Link>
+            {/* Wrapper div for the links */}
+            <div className="nav-links">
+                <Link to="/">Home</Link>
+                <Link to="/create">New Recipe</Link>
+            </div>
         </nav>
     );
 }
