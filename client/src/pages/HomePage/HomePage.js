@@ -1,12 +1,24 @@
 import React from 'react';
-import styles from './Home.module.css';
+import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext'; // Adjust the import path here
+import styles from '../../styles/App.module.css';
 
-const Home = () => {
+const HomePage = () => {
+  const { user } = useAuthContext();
+
   return (
-    <div className={styles.home}>
-      <h1 className={styles.headline}>Omer's Test Home Page</h1>
-    </div>
-  )
-}
+    <div>
+      <h1>Omer's Test Home Page</h1>
 
-export default Home;
+      {user && (
+        <div>
+          <Link to="/addContent">
+            <button className={styles.addContentButton}>Add Content</button>
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default HomePage;
