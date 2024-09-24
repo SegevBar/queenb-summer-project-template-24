@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SuccessScreen from './SuccessScreen.js'; // Import SuccessScreen component
+import SuccessPage from './SuccessPage'; // Correct path for SuccessPage
 import './RecipeForm.css'; // Import CSS for RecipeForm
 
 const RecipeForm = () => {
@@ -16,7 +16,7 @@ const RecipeForm = () => {
     videoLink: '',
   });
 
-  const [uploadSuccess, setUploadSuccess] = useState(false); // Track if upload was successful
+  const [uploadSuccess, setUploadSuccess] = useState(false); // Track form submission success
   const [errors, setErrors] = useState({}); // Track validation errors
 
   // Handle input field changes
@@ -56,7 +56,8 @@ const RecipeForm = () => {
 
     // Validate the form before submission
     if (!validate()) {
-      return; 
+      console.log("Form validation failed");
+      return; // If there are validation errors, do not submit the form
     }
 
     const formData = new FormData();
@@ -66,13 +67,14 @@ const RecipeForm = () => {
     formData.append('ingredients', recipeData.ingredients);
     formData.append('instructions', recipeData.instructions);
     formData.append('tags', recipeData.tags);
-    formData.append('imageFile', recipeData.imageFile);
+    formData.append('imageFile', recipeData.imageFile); // Append file to formData
     formData.append('videoLink', recipeData.videoLink);
     formData.append('publicationDate', new Date().toISOString());
     formData.append('userName', 'someUser'); // Placeholder username
 
     try {
       // Send POST request to the backend
+      console.log("Submitting the form...");
       const response = await axios.post('http://localhost:5000/upload-recipe', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -82,21 +84,26 @@ const RecipeForm = () => {
       console.log('Response Status:', response.status); // Debugging: log response status
 
       if (response.status === 201) {
-        console.log('Upload Successful, showing success screen'); // Debugging message
-        setUploadSuccess(true); // Set success state to true on successful upload
+        console.log("Form submission successful");
+        setUploadSuccess(true); // Show success page when upload is successful
+      } else {
+        console.log("Form submission failed with status:", response.status);
       }
     } catch (error) {
       console.error('Error uploading recipe:', error);
     }
   };
 
-  // If upload is successful, render the success screen
+  // Log to check if uploadSuccess state is being updated
+  console.log("Upload success state:", uploadSuccess);
+
+  // If the form has been successfully submitted, show the success page
   if (uploadSuccess) {
-    console.log('Rendering Success Screen'); // Debugging message
-    return <SuccessScreen />; // This should render the SuccessScreen component
+    console.log("Rendering Success Page...");
+    return <SuccessPage />; // Render the success page component
   }
 
-  // Otherwise, render the form
+  // Otherwise, show the form
   return (
     <div className="recipe-upload-container">
       <header className="header">
@@ -204,8 +211,8 @@ const RecipeForm = () => {
 
         {/* Button Group with Back and Submit buttons */}
         <div className="button-group">
-          <Link to="/" className="back-btn">Back</Link> 
-          <button type="submit" className="submit-btn">Submit</button> 
+          <Link to="/" className="back-btn">Back</Link> {/* Back button */}
+          <button type="submit" className="submit-btn">Submit</button> {/* Submit button */}
         </div>
       </form>
     </div>

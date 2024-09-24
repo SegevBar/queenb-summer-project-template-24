@@ -2,17 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const cors = require('cors'); // Import CORS middleware
 const Recipe = require('./models/Recipe'); 
 const app = express();
+
+// Enable CORS for all origins
+app.use(cors());
 
 // Middleware to handle JSON requests
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// MongoDB connection without deprecated options
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -42,9 +43,9 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
       title,
       level,
       type,
-      ingredients: ingredients.split(','),
+      ingredients: ingredients.split(','), // Split comma-separated string into an array
       instructions,
-      tags: tags.split(','), 
+      tags: tags.split(','), // Split comma-separated string into an array
       imageFile: req.file ? req.file.filename : null, // Save file name if uploaded
       videoLink,
       publicationDate,
@@ -60,6 +61,8 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
   }
 });
 
-// Start the server
+// Use a dynamic port or fallback to port 5000
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
