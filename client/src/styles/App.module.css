@@ -15,11 +15,13 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* Align items to the top */
 }
 
 .leftNav {
-  /* Home button on the left */
+  display: flex;
+  flex-direction: column; /* Stack Home and Success Page button vertically */
+  gap: 10px; /* Add some space between the buttons */
 }
 
 .rightNav {
@@ -33,7 +35,7 @@
 }
 
 /* Buttons with shades of pink */
-.homeButton, .loginButton, .uploadButton {
+.homeButton, .loginButton, .uploadButton, .successButton {
   background-color: #FF85B3; 
   color: white;
   border: none;
@@ -43,7 +45,7 @@
   border-radius: 5px;
 }
 
-.homeButton:hover, .loginButton:hover, .uploadButton:hover {
+.homeButton:hover, .loginButton:hover, .uploadButton:hover, .successButton:hover {
   background-color: #FF5A8A; 
 }
 

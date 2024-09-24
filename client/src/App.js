@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/HomePage/HomePage'; 
 import RecipeForm from './pages/UploadRecipe/RecipeForm'; 
-import styles from './styles/App.module.css';
+import styles from './styles/App.module.css'; // Import your CSS module
 
 function App() {
   return (
@@ -16,12 +16,11 @@ function App() {
               </Link>
             </div>
             
-            {/* Upload Recipe and Login buttons on the right */}
+            {/* Upload Recipe button on the right, removed Success and Login buttons */}
             <div className={styles.rightNav}>
               <Link to="/upload-recipe" className={styles.appLink}>
                 <button className={styles.uploadButton}>Upload Recipe</button>
               </Link>
-              <button className={styles.loginButton}>Login</button>
             </div>
           </nav>
         </header>
