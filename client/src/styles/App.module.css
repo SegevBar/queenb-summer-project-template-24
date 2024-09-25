@@ -15,13 +15,16 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the top */
+  align-items: flex-start;
+  /* Align items to the top */
 }
 
 .leftNav {
   display: flex;
-  flex-direction: column; /* Stack Home and Success Page button vertically */
-  gap: 10px; /* Add some space between the buttons */
+  flex-direction: column;
+  /* Stack Home and Success Page button vertically */
+  gap: 10px;
+  /* Add some space between the buttons */
 }
 
 .rightNav {
@@ -32,22 +35,27 @@
 
 .appLink {
   text-decoration: none;
-}
-
-/* Buttons with shades of pink */
-.homeButton, .loginButton, .uploadButton, .successButton {
-  background-color: #FF85B3; 
+  margin-right: 10px;
+  background-color: #53474F;
   color: white;
-  border: none;
   padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1.2em;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
 }
 
-.homeButton:hover, .loginButton:hover, .uploadButton:hover, .successButton:hover {
-  background-color: #FF5A8A; 
+.appLink:last-child {
+  margin-right: 0;
 }
+
+.appLink:hover {
+  background-color: #6c5d6e;
+}
+
 
 .main {
   padding: 20px;
@@ -63,4 +71,155 @@
   width: 100%;
   bottom: 0;
   text-align: center;
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+}
+
+.error {
+  color: #b33a3a;
+  font-weight: 500;
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 400px;
+  display: block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.button {
+  background-color: #53474F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #6c5d6e;
+}
+
+.button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.button:active {
+  background-color: #3e2f3f;
+  transform: scale(0.98);
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoutButton {
+  background-color: #53474F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #6c5d6e;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  padding: 20px;
+}
+
+
+.form {
+  background-color: rgb(254, 244, 251);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.formHeading {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #53474F;
+}
+
+.addContentButton {
+  background-color: #53474F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.addContentButton:hover {
+  background-color: #6c5d6e;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.addRecipeButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.addRecipeButton:hover {
+  background-color: #45a049;
 }

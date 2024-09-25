@@ -3,14 +3,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const cors = require('cors'); // Import CORS middleware
-const Recipe = require('./models/Recipe'); 
+const Recipe = require('./models/Recipe');
+const userRoutes = require('./routes/user'); // Import user routes
 const app = express();
-
-// Enable CORS for all origins
-app.use(cors());
 
 // Middleware to handle JSON requests
 app.use(express.json());
+
+// Enable CORS for all origins or use the specified client URL from environment variables
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests only from this origin
+  credentials: true,               // Allow cookies if needed
+}));
+
+// Logging middleware to track incoming requests
+app.use((req, res, next) => {
+  console.log(req.path, req.method); // Log the request method and path
+  next();
+});
 
 // MongoDB connection without deprecated options
 mongoose.connect(process.env.MONGO_URI)
@@ -60,6 +70,9 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
     res.status(500).json({ error: 'Failed to upload recipe' });
   }
 });
+
+// User routes
+app.use('/api/user', userRoutes); // Use user routes
 
 // Use a dynamic port or fallback to port 5000
 const PORT = process.env.PORT || 5000;

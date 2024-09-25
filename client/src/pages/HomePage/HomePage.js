@@ -1,17 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Home.module.css';
-import RandomDuck from '../../components/RandomDuck/RandomDuck';
+import { useAuthContext } from '../../hooks/useAuthContext'; // Adjust the import path here
+import styles from '../../styles/App.module.css';
 
-const Home = () => {
+const HomePage = () => {
+  const { user } = useAuthContext();
+
+  // Check if user is being detected
+  console.log("User status:", user);
+
   return (
-    <div className={styles.home}>     
-      <div className={styles.mainContent}>
-        <h1 className={styles.headline}>HOME</h1>
-        <RandomDuck />
-      </div>
+    <div>
+      {!user && (
+        <div>
+          <h3>Sign up or log in in order to upload content</h3>
+        </div>
+      )}
+
+      {user && (
+        <Link to="/RecipeForm" className={styles.addRecipeButton}>
+          Add Recipe
+        </Link>
+      )}
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

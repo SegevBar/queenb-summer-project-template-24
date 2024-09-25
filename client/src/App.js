@@ -1,33 +1,46 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/HomePage/HomePage'; 
-import RecipeForm from './pages/UploadRecipe/RecipeForm'; 
-import styles from './styles/App.module.css'; // Import your CSS module
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import Home from './pages/HomePage/HomePage';
+import styles from './styles/App.module.css';
+import Login from './pages/login';
+import { useLogout } from './hooks/useLogout';
+import { useAuthContext } from './hooks/useAuthContext';
+import Signup from './pages/signup';
+import RecipeForm from './pages/UploadRecipe/RecipeForm';
 
 function App() {
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
           <nav className={styles.appNav}>
-            <div className={styles.leftNav}>
-              <Link to="/" className={styles.appLink}>
-                <button className={styles.homeButton}>Home</button>
-              </Link>
-            </div>
-            
-            {/* Upload Recipe button on the right, removed Success and Login buttons */}
-            <div className={styles.rightNav}>
-              <Link to="/upload-recipe" className={styles.appLink}>
-                <button className={styles.uploadButton}>Upload Recipe</button>
-              </Link>
-            </div>
+            {!user && (
+              <div>
+                <Link to="/login" className={styles.appLink}>Log in</Link>
+                <Link to="/signup" className={styles.appLink}>Sign up</Link>
+              </div>
+            )}
+            {user && (
+              <div className={styles.userSection}>
+                <span>{user.email}</span>
+                <button onClick={handleClick} className={styles.logoutButton}>Log out</button>
+              </div>
+            )}
           </nav>
         </header>
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/upload-recipe" element={<RecipeForm />} /> 
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/RecipeForm" element={user ? <RecipeForm /> : <Navigate to="/login" />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
@@ -38,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; // Ensure this line exists
