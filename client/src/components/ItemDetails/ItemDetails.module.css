@@ -1,0 +1,78 @@
+.itemDetailContainer {
+  display: flex;
+  justify-content: center; /* ממרכז את התיבה אופקית */
+  padding: 20px;
+  max-width: 100%; /* מאפשר לתיבה להתפרס לרוחב מלא */
+}
+
+.item {
+  display: flex;
+  flex-direction: row; /* הופך את המכולה לשורה */
+  align-items: flex-start; /* ליישור התמונה והפרטים באותו קו למעלה */
+  text-align: left;
+  background-color: rgba(240, 185, 185, 0.2); 
+  width: auto;
+  max-width: 500px;
+  height: auto;
+  border: 3px solid #F0B9B9;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+
+
+.item {
+  display: flex;
+  flex-direction: row; /* הפיכת המכולה לשורה */
+  align-items: flex-start; /* ליישור התמונה והפרטים באותו קו למעלה */
+  text-align: left;
+  background-color: rgba(240, 185, 185, 0.2); 
+  width: auto;
+  max-width: 500px;
+  height: auto;
+  border: 3px solid #F0B9B9;
+  border-radius: 30px;
+  padding: 20px;
+  text-align: left;
+}
+
+.itemImg {
+  width: 40%; /* התמונה תופסת 40% מהרוחב הכולל */
+  height: auto;
+  max-height: 400px; /* הגבול המרבי לגובה */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px; /* רווח בין התמונה לבין הפרטים */
+}
+
+.itemDet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* כדי למקם את כל הפרטים בצורה מאוזנת */
+  width: 60%; /* הפרטים תופסים 60% מהרוחב הכולל */
+}
+
+.itemName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4A69BD;
+  margin: 15px 0;
+}
+
+.itemPrice {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.itemDescription {
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.loading,
+.noItem {
+  text-align: center;
+  color: #4A69BD;
+  font-size: 30px;
+  font-weight: bolder;
+}

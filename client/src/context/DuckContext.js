@@ -1,3 +1,4 @@
+/*
 import React, { createContext, useState, useEffect } from 'react';
 import api from '../services/api';
 
@@ -27,3 +28,4 @@ const DuckProvider = ({ children }) => {
 };
 
 export { DuckContext, DuckProvider };
+*/

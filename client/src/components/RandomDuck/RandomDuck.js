@@ -1,3 +1,4 @@
+/*
 import React, { useContext } from 'react';
 import styles from './RandomDuck.module.css';
 import { DuckContext } from '../../context/DuckContext';
@@ -22,3 +23,4 @@ const RandomDuck = () => {
 };
 
 export default RandomDuck;
+*/

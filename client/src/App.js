@@ -1,25 +1,33 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
+import UploadForm from './components/uploadForm/uploadForm';
+import ItemsGrid from './components/ItemsGrid/ItemsGrid';
+import SuccessPage from './components/uploadForm/SuccessPage'; 
+import Navbar from './components/Navbar/Navbar';
+import ItemDetails from './components/ItemDetails/ItemDetails';
 
 function App() {
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
-          <nav className={styles.appNav}>
-            <Link to="/" className={styles.appLink}>Home</Link>
-          </nav>
+          <Navbar />
         </header>
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/upload" element={<UploadForm />} />
+            <Route path="/success" element={<SuccessPage />} />
+            <Route path="/items/:gender" element={<ItemsGrid />} />
+            <Route path="/items/:gender" element={<ItemsGrid />} />
+            <Route path="/items/:gender/:id" element={<ItemDetails />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
+          <p>&copy; QueenB Summer Camp Project 2024</p>
         </footer>
       </div>
     </BrowserRouter>
