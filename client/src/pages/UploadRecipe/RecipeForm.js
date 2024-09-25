@@ -78,7 +78,6 @@ const RecipeForm = () => {
     formData.append('userName', user.email); // Placeholder username
 
     try {
-      // Send POST request to the backend
       console.log("Submitting the form...");
       const response = await axios.post('http://localhost:9000/upload-recipe', formData, {
         headers: {
