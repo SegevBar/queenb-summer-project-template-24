@@ -1,28 +1,39 @@
-/* App.module.css */
 .app {
   text-align: center;
 }
 
 .appHeader {
   background-color: #53474F;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 30px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.appLogo {
-  height: 100px;
-}
-
 .appNav {
   display: flex;
-  gap: 30px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* Align items to the top */
+}
+
+.leftNav {
+  display: flex;
+  flex-direction: column;
+  /* Stack Home and Success Page button vertically */
+  gap: 10px;
+  /* Add some space between the buttons */
+}
+
+.rightNav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .appLink {
-  color: white;
   text-decoration: none;
   margin-right: 10px;
   background-color: #53474F;
@@ -186,4 +197,29 @@
 
 .addContentButton:hover {
   background-color: #6c5d6e;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.addRecipeButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.addRecipeButton:hover {
+  background-color: #45a049;
 }

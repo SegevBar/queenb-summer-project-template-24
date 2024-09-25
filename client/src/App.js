@@ -1,28 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
-import Home from './pages/HomePage/HomePage'
-import styles from './styles/App.module.css'
-import Login from './pages/login'
-import AddContent from './pages/addContent';
-import { useLogout } from './hooks/useLogout'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import Home from './pages/HomePage/HomePage';
+import styles from './styles/App.module.css';
+import Login from './pages/login';
+import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext';
-import Signup from './pages/signup'
-
-
+import Signup from './pages/signup';
+import RecipeForm from './pages/UploadRecipe/RecipeForm';
 
 function App() {
-  const { logout } = useLogout()
-  const { user } = useAuthContext()
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   const handleClick = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
             {!user && (
               <div>
@@ -43,7 +40,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
-            <Route path="/addContent" element={user ? <AddContent /> : <Navigate to="/login" />} />
+            <Route path="/RecipeForm" element={user ? <RecipeForm /> : <Navigate to="/login" />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
@@ -54,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; // Ensure this line exists
