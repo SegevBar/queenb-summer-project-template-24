@@ -8,7 +8,12 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Omer's Test Home Page</h1>
+
+      {!user && (
+        <div>
+          <h3>Sign up or log in in order to upload content</h3>
+        </div>
+      )}
 
       {user && (
         <div>
