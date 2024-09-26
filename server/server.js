@@ -6,6 +6,7 @@ const RecipeManager = require('./databaseManager/recipeManager');
 const recipesRoutes = require('./routes/recipes')
 const recipesFilterRoutes = require('./routes/recipesFilterRoute')
 
+
 dotenv.config();
 
 // Constants
@@ -23,6 +24,7 @@ app.use(cors({
 // app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+  console.log('Requested path:', req.path); //delete this
   console.log(req.path, req.method)
   next()
 })

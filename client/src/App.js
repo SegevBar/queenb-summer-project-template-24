@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
+import CategoryPage from './pages/CategoryPage/CategoryPage';
+import RecipePage from './pages/RecipePage/RecipePage';
 import styles from './styles/App.module.css';
 import AppNav from './components/common/AppNav/AppNav';
 import FilterBar from './components/common/FilterBar/FilterBar';
@@ -36,6 +38,8 @@ function App() {
             <div className={styles.contentContainer}>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/recipes/:recipeName" element={<RecipePage />} />
+                <Route path="/recipes/category/:title" element={<CategoryPage />} />
               </Routes>
               <footer className={styles.footer}>
                 <p>&copy; 2024 My App</p>
