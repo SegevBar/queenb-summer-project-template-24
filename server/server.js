@@ -8,6 +8,7 @@ const recipesFilterRoutes = require('./routes/recipesFilterRoute')
 const userRoutes = require('./routes/user');
 
 
+
 dotenv.config();
 
 // Constants
@@ -25,6 +26,7 @@ app.use(cors({
 // app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+  console.log('Requested path:', req.path); //delete this
   console.log(req.path, req.method)
   next()
 })
