@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/global.css'; // Importing global styles for the application
-import Navbar from './pages/Navbar'; // Importing the Navbar component for consistent navigation across pages
+import Navbar from './components/Navbar'; // Importing the Navbar component for consistent navigation across pages
 import HomePage from './pages/HomePage/HomePage'; // Importing the HomePage component to be rendered on the home route
 import RecipeDetails from './pages/RecipeDetails'; // Importing the RecipeDetails component for displaying individual recipe details
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importing React Router components for client-side routing

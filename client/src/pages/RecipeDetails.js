@@ -4,38 +4,39 @@ import useFetch from '../useFetch';  // Import the custom 'useFetch' hook for fe
 const RecipeDetails = () => {
     const { id } = useParams();  // Extract the 'id' parameter from the URL using the 'useParams' hook. This will allow us to fetch details for a specific recipe.
 
-    // Log the full URL to the console for debugging
     const url = process.env.REACT_APP_API_URL + '/recipes/' + id;  // Construct the API URL dynamically by adding '/recipes/' and the 'id' to the base URL from environment variables (REACT_APP_API_URL).
 
-    // Use the 'useFetch' hook to make the API request
-    // 'data' is renamed as 'recipe' for better clarity
-    // 'error' will store any error messages if the request fails
-    // 'isLoading' will be true while the data is being fetched
-    const {data: recipe, error, isLoading} = useFetch(url);  // Call 'useFetch' with the constructed URL to get the recipe data.
+    const { data: recipe, error, isLoading } = useFetch(url);  // Call 'useFetch' with the constructed URL to get the recipe data.
 
     return (
-        <div className="recipe-details">  {/* Main container for the recipe details */}
-            {isLoading && <div>Loading...</div>}  {/* While the data is being fetched, show a loading message */}
-            { error && <div>{ error }</div> }  {/* If there's an error, display the error message */}
+        <div className="recipe-details">
+            {isLoading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
             
-            {/* If the recipe data is successfully fetched, render the details */}
             {recipe && (
                 <article>
-                    <h2>{recipe.title}</h2>  {/* Display the title of the recipe */}
-                    <p>Written by {recipe.userName}</p>  {/* Display the author's username */}
+                    <h2>{recipe.title}</h2>
+                    <p>Written by {recipe.userName}</p>
 
                     <div>
                         <h3>Ingredients:</h3>
-                        <p>{recipe.ingredients}</p>  {/* Display the ingredients list */}
+                        {/* Check if ingredients is an array */}
+                        {Array.isArray(recipe.ingredients) ? (
+                            <ul>  {/* Change from <ol> to <ul> */}
+                                {recipe.ingredients.map((ingredient, index) => (
+                                    <li key={index} style={{ marginBottom: '5px' }}>{ingredient}</li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>No ingredients available</p>  // Handle cases where ingredients might not be an array
+                        )}
 
                         <h3>Instructions:</h3>
-                        <p>{recipe.instructions}</p>  {/* Display the cooking instructions */}
+                        <p>{recipe.instructions}</p>
 
                         <h3>Tags:</h3>
-                        {/* Tags are stored as an array, so we use 'join' to turn the array into a comma-separated string */}
-                        <p>{recipe.tags.join(', ')}</p>  
+                        <p>{recipe.tags.join(', ')}</p>
 
-                        {/* Format the publication date using 'toLocaleDateString' to make it readable */}
                         <p>Published on: {new Date(recipe.publicationDate).toLocaleDateString()}</p>
                     </div>
                 </article>
@@ -44,4 +45,4 @@ const RecipeDetails = () => {
     );
 };
 
-export default RecipeDetails;  // Export the 'RecipeDetails' component to use it elsewhere in the app
+export default RecipeDetails; 

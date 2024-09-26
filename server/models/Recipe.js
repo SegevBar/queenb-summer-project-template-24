@@ -6,9 +6,11 @@ const recipeSchema = new Schema({
   title: { type: String, required: true },
   level: String,
   type: String,
-  ingredients: String, // You have ingredients as a single string in your document
+  ingredients: [String],  // Updated to an array of strings
   instructions: String,
   tags: [String],  // Array of strings
+  imageFile: String,  // To store the image file name or path
+  videoLink: String,  // To store an optional video link
   publicationDate: Date,
   userName: String
 }, { timestamps: true });
