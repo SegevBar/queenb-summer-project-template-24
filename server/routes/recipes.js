@@ -1,5 +1,12 @@
 const express = require('express');
 const {
+
+  getAllRecipes,
+  addRecipe,
+  deleteRecipe
+} = require('../controllers/RecipesController');
+const requireAuth = require('../middleware/requireAuth'); // Import the middleware
+
     getAllRecipes,
     getRecipeByName,
     getAllRecipesInCategory,
@@ -7,10 +14,15 @@ const {
     deleteRecipe
  } = require('../controllers/recipesController')
 
-const router = express.Router()
 
-// GET all recipes
-router.get('/', getAllRecipes)
+const router = express.Router();
+
+// GET all recipes (no auth required)
+router.get('/', getAllRecipes);
+
+
+// POST a new recipe (auth required)
+router.post('/', requireAuth, addRecipe);
 
 // GET a single recipe by name
 router.get('/search', getRecipeByName)
@@ -21,7 +33,8 @@ router.get('/category/:title', getAllRecipesInCategory)
 // POST a new recipe
 router.post('/', addRecipe);
 
-// DELETE a recipe
-router.delete('/:id', deleteRecipe);
 
-module.exports = router
+// DELETE a recipe (auth required)
+router.delete('/:id', requireAuth, deleteRecipe);
+
+module.exports = router;
