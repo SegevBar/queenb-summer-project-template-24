@@ -3,8 +3,13 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SuccessPage from './SuccessPage'; // Correct path for SuccessPage
 import './RecipeForm.css'; // Import CSS for RecipeForm
+import { useAuthContext } from '../../hooks/useAuthContext';
+
+
+
 
 const RecipeForm = () => {
+  const { user } = useAuthContext();
   const [recipeData, setRecipeData] = useState({
     title: '',
     level: '',
@@ -70,12 +75,11 @@ const RecipeForm = () => {
     formData.append('imageFile', recipeData.imageFile); // Append file to formData
     formData.append('videoLink', recipeData.videoLink);
     formData.append('publicationDate', new Date().toISOString());
-    formData.append('userName', 'someUser'); // Placeholder username
+    formData.append('userName', user.email); // Placeholder username
 
     try {
-      // Send POST request to the backend
       console.log("Submitting the form...");
-      const response = await axios.post('http://localhost:5000/upload-recipe', formData, {
+      const response = await axios.post('http://localhost:9000/upload-recipe', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
