@@ -1,28 +1,62 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Home from './pages/HomePage/HomePage';
-import styles from './styles/App.module.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import UserContentDashboard from "./components/ContentDashboard/ContentDashboard";
+import { useAuthContext } from "./hooks/useAuthContext";
+import Home from "./pages/HomePage";
+import NavBar from "./components/NavBar";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import UploadTrailer from "./components/UploadTrailer"; 
+import LibraryView from './pages/LibraryViewPage/LibraryViewPage';
+import TrailerPage  from './pages/TrailerPage';
+import NotFound from './pages/NotFoundPage';
 
 function App() {
+  const { user } = useAuthContext();
+  const [successMessage, setSuccessMessage] = useState(null); // State for success message
+
   return (
-    <BrowserRouter>
-      <div className={styles.app}>
-        <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
-          <nav className={styles.appNav}>
-            <Link to="/" className={styles.appLink}>Home</Link>
-          </nav>
-        </header>
-        <main className={styles.main}>
+    <div className="App">
+      <BrowserRouter>
+        <NavBar />
+        <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={user ? <Home successMessage={successMessage} /> : <Navigate to="/login" />}
+            />
+            {/* Pass the setSuccessMessage to the UploadTrailer component */}
+            <Route
+              path="/upload-trailer"
+              element={user ? <UploadTrailer setSuccessMessage={setSuccessMessage} /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/dashboard"
+              element={
+                user ? <UserContentDashboard /> : <Navigate to="/login" />
+              }
+            />
+            <Route
+              path="/trailers"
+              element={user ? <LibraryView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/trailers/:id"
+              element={user ? <TrailerPage /> : <Navigate to="/login" />}
+            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-        </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
-        </footer>
-      </div>
-    </BrowserRouter>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 

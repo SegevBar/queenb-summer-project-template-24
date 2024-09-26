@@ -1,0 +1,246 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #a375d5;
+  --error: #e7195a;
+  --success: #30c68a;
+}
+body {
+  background: #f1f1f1;
+  margin: 0;
+  font-family: "Poppins";
+  background-image: url('../assets/top-view-cinema-clapperboard-with-popcorn.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.button{
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.1rem;
+}
+
+/* form */
+label, input {
+  display: block;
+  font-weight: normal;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+
+div.success {
+  padding: 10px;
+  background: #e6fbe6;
+  border: 1px solid var(--success);
+  color: var(--success);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+nav a {
+  margin-right: 20px;
+  color: #333;
+  font-weight: 400;
+  transition: color 0.3s ease; 
+}
+
+nav a:hover {
+  color: var(--primary); /* Change color on hover */
+}
+nav span {
+  margin: 0 10px; /* Small margins for inline text */
+  font-weight: 600; /* Bold for emphasis on text */
+  color: var(--primary); /* Primary color for highlights */
+}
+
+nav .user-menu {
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+  user-select: none; /* Prevents text selection when clicking */
+  font-size: 16px;
+}
+
+nav .dropdown-menu {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 10;
+  min-width: 150px;
+}
+
+nav .dropdown-menu a,
+nav .dropdown-menu button {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+nav .dropdown-menu a:hover,
+nav .dropdown-menu button:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+nav .dropdown-menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+}
+.logout-btn i,
+.logout-btn .material-icons {
+  margin-right: 8px; 
+  font-size: 16px; 
+}
+/* auth forms */
+
+form.signup, form.login, form.editTrailer {
+  display: flexbox;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 30px;
+}
+
+.container-password-input, .container-email-input {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+}
+
+.container-password-input i, .container-email-input i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #373636;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* Home Page */
+.home {
+  text-align: center;
+  padding: 20px;
+}
+
+.headline {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #53474F;
+}
+
+
+/* new trailer form */
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
