@@ -16,9 +16,18 @@ function SearchBar() {
 
   // Handler for clicking on a recipe in search results
   const handleRecipeClick = (recipe) => {
-    //navigate(`/recipe/${encodeURIComponent(recipe.title)}`);
-    console.log(recipe.title);
+    if (searchResultRef.current) {
+      searchResultRef.current.style.display = "none";
+    }
+    console.log("Navigating to:", recipe.title); // Debugging line
+    navigate(`/recipes/${encodeURIComponent(recipe.title)}`);
   };
+
+  const handleSearchBarClick = () => {
+    if (searchResultRef.current) {
+      searchResultRef.current.style.display = "block";
+    }
+  }
 
   // Reset scroll position when input loses focus
   const handleInputBlur = () => {
@@ -73,7 +82,7 @@ function SearchBar() {
         <button type="button" className={styles.searchBtn}>
           <FcSearch />
         </button>
-        <div className={styles.formGroup}>
+        <div className={styles.formGroup} onClick={handleSearchBarClick}>
           <input 
           type="text"
           className={styles.formControl}
@@ -87,11 +96,11 @@ function SearchBar() {
         {searchResult && searchResult.length > 0 && (
           <div className={styles.searchResult} ref={searchResultRef}>
             {searchResult.map((recipe) => (
-              <div className={styles.searchItem} key={recipe._id}>
-                <h3 onClick={() => handleRecipeClick(recipe)}>
+              <button className={styles.searchItem} key={recipe._id} onClick={(e) => { e.preventDefault(); handleRecipeClick(recipe); }}>
+                <h3 className={styles.searchItemText}>
                   {highlightMatch(recipe.title, key)}
                 </h3>
-              </div>
+              </button>
             ))}
           </div>
         )}

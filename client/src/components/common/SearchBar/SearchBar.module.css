@@ -11,17 +11,15 @@
 }
 
 .searchBtn {
-    /* position: absolute; */
     left: 10px;
     top: 50%;
-    /* transform: translateY(-50%); */
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
     padding: 10px 15px;
-    color: #555;
     display: flex;
+    color: #555;
     align-items: center;
     justify-content: center;
 }
@@ -37,7 +35,7 @@
     background: transparent;
     font-size: 18px;
     outline: none;
-    font-family: 'EB Garamond', serif;
+    /* font-family: 'EB Garamond', serif; */
 }
 
 .searchResult {
@@ -45,6 +43,7 @@
     top: 100%;
     left: 0;
     right: 0;
+    flex-direction: column;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -56,6 +55,10 @@
     visibility: hidden;
     scroll-behavior: smooth;
     font-family: 'EB Garamond', serif;
+    justify-content: center;
+    justify-items: center;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
 }
 
 .searchWrapper:focus-within .searchResult {
@@ -67,10 +70,22 @@
     padding: 12px 20px;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: flex;
+    width: 100%;
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
 }
 
 .searchItem:hover {
     background-color: #f0f0f0;
+}
+
+.searchItemText {
+    padding: 0px;
+    text-align: center;
 }
 
 .searchItem h3 {
@@ -89,14 +104,12 @@
 }
 
 .searchResult::-webkit-scrollbar-thumb {
-    background: #48b5d3;
-    /* background: #888; */
+    background: #888;
     border-radius: 4px;
 }
 
 .searchResult::-webkit-scrollbar-thumb:hover {
-    /* background: #555; */
-    background: #1fb3ed;
+    background: #555;
 }
 
 .highlight {
