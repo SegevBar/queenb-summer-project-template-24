@@ -1,0 +1,13 @@
+/* Basic Checkbox */
+input[type="checkbox"] {
+    /* Custom size */
+    width: 20px;
+    height: 20px;
+    /* Border and background */
+    border: 2px solid #007BFF;
+    background-color: #FFFFFF;
+    /* Rounded corners */
+    border-radius: 4px;
+    /* Appearance for checked state */
+    accent-color: #007BFF;
+}

@@ -1,0 +1,14 @@
+.searchIcon{
+    padding: 8px;
+    cursor: pointer;
+}
+
+.search{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar{
+    width: 300px;
+}

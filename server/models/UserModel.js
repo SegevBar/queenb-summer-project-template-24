@@ -2,19 +2,23 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const rubberDuckSchema = new Schema(
+const userSchema = new Schema(
   {
-    name: {
+    userName: {
       type: String,
       required: true,
     },
-    color: {
+    email: {
       type: String,
       required: true,
     },
-    imageUrl: {
+    password: {
       type: String,
       required: true,
+    },
+    profilePicURL: {
+      type: String,
+      required: false,
     },
   },
   {
@@ -22,4 +26,4 @@ const rubberDuckSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("RubberDuck", rubberDuckSchema);
+module.exports = mongoose.model("User", userSchema);

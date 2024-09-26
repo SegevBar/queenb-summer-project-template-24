@@ -1,0 +1,10 @@
+.paginationWrapper {
+    position: absolute;
+    bottom: 13%; /* Distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers pagination horizontally */
+    padding: 0 16px; /* Optional padding */
+  }
