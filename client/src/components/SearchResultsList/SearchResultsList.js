@@ -1,5 +1,5 @@
 import "./SearchResultsList.css";
-import { SearchResult } from "../SearchResult/SearchResult";
+// import { SearchResult } from "../SearchResult/SearchResult";
 import React from "react";
 
 export const SearchResultsList = ({ results }) => {

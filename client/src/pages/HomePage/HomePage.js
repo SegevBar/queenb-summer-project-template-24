@@ -11,8 +11,8 @@ const Home = () => {
       <h1 className={styles.headline}>Recepies Website</h1>
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
-        {/* <SearchResultsList results={results} /> */}
-        {results && results.length > 0 && <SearchResultsList results={results} />}
+        <SearchResultsList results={results} />
+        {/* {results && results.length > 0 && <SearchResultsList results={results} />} */}
       </div>
     </div>
   );
