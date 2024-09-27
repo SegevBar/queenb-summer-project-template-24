@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Define the Recipe schema
-const RecipeSchema = new mongoose.Schema({
+const recipeSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -22,23 +23,25 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tags: [String],
+  tags: [String],  // Array of strings for tags
   imageFile: {
-    type: String,
+    type: String,  // Store the image file name or path
   },
   videoLink: {
-    type: String,
+    type: String,  // Optional video link
   },
   publicationDate: {
     type: Date,
-    default: Date.now,
+    default: Date.now,  // Default to the current date
   },
   userName: {
-    type: String,
-  },
+    type: String,  // Username of the person who uploaded the recipe
+  }
+}, 
+{ 
+  timestamps: true,  // Automatically add `createdAt` and `updatedAt`
+  collection: 'recipes'  // Explicitly set the collection name
 });
 
-// Create the Recipe model from the schema
-const Recipe = mongoose.model('Recipe', RecipeSchema);
-
-module.exports = Recipe;
+// Create and export the Recipe model
+module.exports = mongoose.model('Recipe', recipeSchema);
