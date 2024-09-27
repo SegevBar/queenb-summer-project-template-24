@@ -79,7 +79,7 @@ const RecipeForm = () => {
 
     try {
       console.log("Submitting the form...");
-      const response = await axios.post('http://localhost:9000/upload-recipe', formData, {
+      const response = await axios.post('http://localhost:8082/upload-recipe', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

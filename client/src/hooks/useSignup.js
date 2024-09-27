@@ -14,7 +14,7 @@ export const useSignup = () => {
         setError(null)
 
         // making a login request
-        const response = await fetch('http://localhost:9000/api/user/signup', {
+        const response = await fetch('http://localhost:8082/api/user/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

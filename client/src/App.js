@@ -1,25 +1,32 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
-import Home from './pages/HomePage/HomePage';
-import styles from './styles/App.module.css';
-import Login from './pages/login';
-import { useLogout } from './hooks/useLogout';
-import { useAuthContext } from './hooks/useAuthContext';
-import Signup from './pages/signup';
-import RecipeForm from './pages/UploadRecipe/RecipeForm';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom'; 
+import HomePage from './pages/HomePage/HomePage'; 
+import RecipeDetails from './pages/RecipeDetails'; 
+import RecipeForm from './pages/UploadRecipe/RecipeForm'; 
+import Login from './pages/login'; 
+import Signup from './pages/signup'; 
+import Navbar from './components/Navbar'; 
+import { useLogout } from './hooks/useLogout'; 
+import { useAuthContext } from './hooks/useAuthContext'; 
+import styles from './styles/App.module.css'; 
 
 function App() {
-  const { logout } = useLogout();
-  const { user } = useAuthContext();
+  const { logout } = useLogout(); 
+  const { user } = useAuthContext(); 
 
   const handleClick = () => {
-    logout();
+    logout(); 
+  };
+
+  const renderAuthRoute = (Component) => {
+    return user ? <Navigate to="/" /> : <Component />;
   };
 
   return (
-    <BrowserRouter>
+    <Router> 
       <div className={styles.app}>
         <header className={styles.appHeader}>
+          <Navbar /> 
           <nav className={styles.appNav}>
             {!user && (
               <div>
@@ -37,18 +44,16 @@ function App() {
         </header>
         <main className={styles.main}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/recipes/:id" element={<RecipeDetails />} />
             <Route path="/RecipeForm" element={user ? <RecipeForm /> : <Navigate to="/login" />} />
+            <Route path="/login" element={renderAuthRoute(Login)} />
+            <Route path="/signup" element={renderAuthRoute(Signup)} />
           </Routes>
         </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
-        </footer>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
-export default App; // Ensure this line exists
+export default App; 

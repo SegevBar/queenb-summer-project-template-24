@@ -2,18 +2,24 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
-const cors = require('cors'); // Import CORS middleware
-const Recipe = require('./models/Recipe');
+const cors = require('cors'); 
+const Recipe = require('./models/Recipe'); // Assuming you have a Recipe model
 const userRoutes = require('./routes/user'); // Import user routes
+const recipesRoutes = require('./routes/recipes');  // Import recipes routes
+
+// Constants
+const PORT = process.env.PORT || 8082; // Fallback to port 8082 if not set
+
+// Create Express server
 const app = express();
 
 // Middleware to handle JSON requests
 app.use(express.json());
 
-// Enable CORS for all origins or use the specified client URL from environment variables
+// Enable CORS for specific origin
 app.use(cors({
   origin: 'http://localhost:3000', // Allow requests only from this origin
-  credentials: true,               // Allow cookies if needed
+  credentials: true,               // Allow credentials if needed
 }));
 
 // Logging middleware to track incoming requests
@@ -23,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // MongoDB connection without deprecated options
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }) // Added options to avoid deprecation warnings
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -72,10 +78,12 @@ app.post('/upload-recipe', upload.single('imageFile'), async (req, res) => {
 });
 
 // User routes
-app.use('/api/user', userRoutes); // Use user routes
+app.use('/api/user', userRoutes);
 
-// Use a dynamic port or fallback to port 5000
-const PORT = process.env.PORT || 5000;
+// Recipes routes
+app.use('/api/recipes', recipesRoutes);
+
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
