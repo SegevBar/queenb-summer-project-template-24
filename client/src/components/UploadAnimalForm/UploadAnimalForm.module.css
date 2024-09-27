@@ -1,0 +1,128 @@
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e6bae6;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(17, 10, 15, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative; 
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Align label and input side-by-side */
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Label styling */
+.field label {
+  font-size: 18px;
+  margin-right: 10px;
+  color: #2e0b2c;
+  flex: 1; 
+  font-family: 'Arial', sans-serif;
+}
+
+/* Input, textarea, and file upload styling */
+.field input,
+.field textarea,
+.field select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+/* Ensure that select elements have the same width as input fields */
+.field select {
+  width: 100%;
+}
+
+/* Ensure input fields and select elements have consistent width */
+.field input,
+.field textarea,
+.field select {
+  flex: 2; /* Adjust flex value to align properly */
+}
+
+/* Styling for textarea */
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* File upload styling */
+.field input[type="file"] {
+  padding: 10px; /* Match the padding with other inputs */
+  font-size: 16px;
+  border: 1px solid #ddd; /* Ensure it has the same border as other inputs */
+  border-radius: 5px; /* Consistent border radius */
+  width: calc(100% - 20px); /* Adjust width to fit the container */
+}
+.submitButton button {
+  padding: 10px 20px; /* Adjust padding for better sizing */
+  color: rgb(233, 223, 238); /* Text color */
+  background-color: #ee0bd0; /* Background color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  max-width: 200px;
+  margin: 0 auto; 
+  display: block; 
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submitButton:hover button {
+  background-color: #d200c0; /* Darker background color on hover */
+}
+/* Error message styling */
+.error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Age field container styling */
+.ageFields {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 2;
+}
+
+/* Individual age field styling */
+.ageField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+/* Add spacing below labels */
+.ageField label {
+  margin-top: 5px;
+}
+
+/*validation error*/
+.validationError{
+  color: red;
+  text-align: center;
+  font-size: 16px;
+}

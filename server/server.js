@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const rubberDucksRoutes = require('./routes/rubberDucks')
+const animalRoutes = require('./routes/animalRoutes')
+const userRoutes = require('./routes/userRoutes');
+const path = require('path');
 
 dotenv.config();
 
@@ -23,8 +25,12 @@ app.use((req, res, next) => {
   next()
 })
 
+
 // Routes
-app.use('/api/rubberDucks', rubberDucksRoutes)
+app.use('/api/animals', animalRoutes)
+app.use('/api/user', userRoutes)
+// Serve static files from the "AnimalUploadMedia" directory
+app.use('/uploads', express.static(path.join(__dirname, 'AnimalUploadMedia')))
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -32,11 +38,9 @@ mongoose.connect(process.env.MONGO_URI)
     // listen for requests
     app.listen(PORT, () => {
       console.log('connected to mongoDB & listening on port', process.env.PORT)
+
     })
   }).catch((err) => {
     console.log(err)
   });
-
-
-
 

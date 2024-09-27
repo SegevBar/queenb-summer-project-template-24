@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
 /* App.module.css */
 .app {
   text-align: center;
 }
 
 .appHeader {
-  background-color: #53474F;
+  background-color: #d3b8ae;
   padding: 5px 30px 5px 30px;
   color: white;
   display: flex;
@@ -13,18 +15,13 @@
 }
 
 .appLogo {
-  height: 100px;
+  height: 120px;
 }
 
 .appNav {
   display: flex;
   gap: 20px;
-}
-
-.appLink {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
+  
 }
 
 .appLink:hover {
@@ -33,17 +30,36 @@
 
 .main {
   padding: 20px;
-  background-color: #FFDCE8;
-  height: 100vh;
+  background-color: #fcebd6;
+  min-height: calc(120vh - 60px); /* Adjusted height to ensure space for footer */
+  box-sizing: border-box; /* Include padding in height calculation */
 }
 
 .footer {
   padding: 10px;
-  background-color: #53474F;
+  background-color: #d3b8ae;
   color: white;
   position: fixed;
   width: 100%;
   bottom: 0;
   text-align: center;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
-  
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 90px;
+  padding: 10px 0;
+  transition: 0.4s;
+  color: #594a42
+}
+
+button:hover {
+  color: #594a42;
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  background-color: #fcebd6;
+}
