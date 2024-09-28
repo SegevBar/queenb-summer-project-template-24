@@ -17,6 +17,40 @@
   font-size: 18px;
 }
 
+/* Modern style for the website title */
+.headline {
+  font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
+  font-size: 48px; /* Large title size */
+  font-weight: 700; /* Bold font weight */
+  color: #333; /* Dark, sleek color */
+  text-align: center; /* Center the title */
+  margin-top: 40px;
+  letter-spacing: 1px; /* Subtle letter spacing */
+  text-transform: uppercase; /* Make the title uppercase for modern feel */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Add a modern underline effect */
+.headline::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #ff4747; /* Bright, modern accent color */
+  margin: 15px auto 0 auto;
+  border-radius: 2px; /* Slight rounding for a softer modern look */
+  transition: width 0.3s ease; /* Animation for hover */
+}
+
+/* Hover effect for underline */
+.headline:hover::after {
+  width: 100px; /* Extend underline on hover */
+}
+
+
+
 .main {
   padding: 20px;
 }

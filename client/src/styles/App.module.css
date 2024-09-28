@@ -1,10 +1,14 @@
 .app {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
 }
 
 .appHeader {
   background-color: #53474F;
   padding: 15px 30px;
+  justify-content: space-between; /* Space between the Navbar and Nav items */
   /* Increased padding for better spacing */
   color: white;
   display: flex;
