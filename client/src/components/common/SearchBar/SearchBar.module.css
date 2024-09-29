@@ -30,7 +30,8 @@
 
 .formControl {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 8px; /* 12px on the top and bottom, and 20px on the left and right.*/
+    padding-right: 30px; /* Add right padding to move text to the left */
     border: none;
     background: transparent;
     font-size: 18px;
@@ -115,4 +116,18 @@
 .highlight {
     color: #FF7D9C;
     font-weight: bold;
+}
+
+.clearBtn {
+    position: absolute; /* Position it absolutely within the formGroup */
+    right: 15px; /* Adjust as needed for spacing */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    background: none; /* No background */
+    border: none; /* No border */
+    font-size: 30px; /* Adjust size */
+    color: #555; /* Color of the X */
+    cursor: pointer; /* Pointer cursor */
+    padding: 0; /* No padding */
+    outline: none; /* Remove outline */
 }

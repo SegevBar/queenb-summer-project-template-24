@@ -16,11 +16,18 @@ function SearchBar() {
 
   // Handler for clicking on a recipe in search results
   const handleRecipeClick = (recipe) => {
+    setKey(recipe.title); // Set the search bar value to the selected recipe title
+    //setSearchResult([]); // Clear the search results
     if (searchResultRef.current) {
       searchResultRef.current.style.display = "none";
     }
     console.log("Navigating to:", recipe.title); // Debugging line
     navigate(`/recipes/${encodeURIComponent(recipe.title)}`);
+  };
+
+  const handleClearInput = () => {
+    setKey(""); // Clear the input field
+    //setSearchResult([]); // Optionally clear search results
   };
 
   const handleSearchBarClick = () => {
@@ -91,6 +98,11 @@ function SearchBar() {
           onChange={(e) => setKey(e.target.value)}
           onBlur={handleInputBlur}
           />
+          {key && ( // Show the clear button only if there is text in the input
+            <button type="button" className={styles.clearBtn} onClick={handleClearInput}>
+              &times; {/* X character */}
+            </button>
+          )}
         </div>
         {/* Display search results if available */}
         {searchResult && searchResult.length > 0 && (
