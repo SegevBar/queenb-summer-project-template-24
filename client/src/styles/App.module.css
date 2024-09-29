@@ -1,49 +1,36 @@
 /* App.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body {
+  height: 100%; 
+  margin: 0; 
+}
+
 .app {
-  text-align: center;
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.main {
+  flex: 1; 
+  padding: 20px;
+  background-color: #FAF4EF;
 }
 
 .appHeader {
-  background-color: #53474F;
-  padding: 5px 30px 5px 30px;
-  color: white;
+  background-color: #FAF4EF;
+  padding: 0px 30px 5px 30px;
+  color: #4A69BD;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.appLogo {
-  height: 100px;
-}
-
-.appNav {
-  display: flex;
-  gap: 20px;
-}
-
-.appLink {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-
-.appLink:hover {
-  text-decoration: underline;
-}
-
-.main {
-  padding: 20px;
-  background-color: #FFDCE8;
-  height: 100vh;
-}
-
 .footer {
-  padding: 10px;
-  background-color: #53474F;
-  color: white;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+  font-family: 'Poppins', sans-serif;
+  padding: 5px;
+  background-color: #F0B9B9;
+  color: #FAF4EF;
   text-align: center;
 }
-  

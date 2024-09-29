@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.center-wrapper {
+    display: flex;
+    justify-content: center; /* מרכז אופקית */
+    align-items: center; /* מרכז אנכית */
+    height: 50vh; /* גובה מלא של הדפדפן */
+}
+
+.headlineSuccess {
+  font-size: 5em;
+  margin-bottom: 20px;
+  color: #F0B9B9;
+  }
+
+.headline {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #F0B9B9;
+    }
+
+   /*new workout form 
+label, input {
+    display: block;
+  }*/
+
+.creatSuccess {
+    background-color: #FDDCD7 ;
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    justify-content: center; 
+    align-items: center;
+    border: 10px solid #FDDCD7;
+    border-radius: 10%;
+    padding: 5px;
+}
+
+
+.creat {
+    background-color: #FDDCD7 ;
+    display: grid;
+    width: 1000px;
+    grid-template-columns: 1fr 1fr; /* שני טורים */
+    gap: 10px; /* ריווח בין תאים */
+    border: 10px solid #FDDCD7;
+    border-radius: 7%;
+    padding: 5px;
+  }
+  label{
+    grid-column: 1;
+  }
+
+  input {
+    grid-column: 2;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 40%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /*.name-box {
+    margin: 0;
+    padding: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #ffefef;
+    border-radius: 40%;
+  }
+*/
+
+    form button{
+    color: #4A69BD;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: var(--primary);
+    border: 0;
+  }
+
+  form button:hover {
+    color: #F0B9B9;
+  }
+
+  div.error {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+  }

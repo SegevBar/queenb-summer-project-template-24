@@ -1,0 +1,34 @@
+.appLogo {
+    width: 200px;
+    display: block;
+  }
+  
+  .appNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures the logo and menu are on opposite sides */
+    width: 100%;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .appLink {
+    color: #4A69BD;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: fit-content;
+  }
+  
+  .appLink:hover {
+    color: #F0B9B9;
+  }
+  
+  .navButton {
+    padding: 10px 20px;
+  }
