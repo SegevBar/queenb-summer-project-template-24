@@ -1,0 +1,101 @@
+/* General styles for the body */
+body {
+    /* display: flex;  */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffeef5; /* Soft pink background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the signup form */
+.login {
+    background-color: #ffe5ec; /* Lighter pink form background */
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    grid-template-columns: 1fr 1fr;
+    gap: 5px; /* Space between inputs */
+}
+
+/* Styling for the form headings */
+.login h3 {
+    grid-column: span 2; /* Make the heading span the entire form */
+    text-align: center;
+    font-size: 36px;
+    color: #ff7ea8; /* Pink color for text */
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.login label {
+    font-size: 18px;
+    color: #ff7ea8; /* Soft pink color for the label */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input field styling */
+.login input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffc0cb; /* Light pink border */
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Input field focus styling */
+.login input:focus {
+    border-color: #ff7ea8; /* Darker pink on focus */
+    box-shadow: 0 0 5px rgba(255, 126, 168, 0.5);
+}
+
+/* Button styling */
+.login button {
+/*grid-column: span 2; /* Make the button span the whole width */
+    background-color: #ff7ea8; /* Pink background */
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.login button:hover {
+    background-color: #ff4f8b; /* Darker pink on hover */
+}
+
+/* Disabled button styling */
+.login button:disabled {
+    background-color: #ffc0cb; /* Light pink when disabled */
+    cursor: not-allowed;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 16px;
+    grid-column: span 2;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container {
+    flex: 1;
+    padding: 10px;
+}
+
+.label-name {
+    text-align: start;
+}
