@@ -1,0 +1,147 @@
+.form {
+    max-width: 600px;
+    margin: 0 auto 80px;
+    padding: 20px;
+    background-color: #795757;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(17, 10, 15, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    font-size: 24px;
+    color: #FFF0D1;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Align label and input side-by-side */
+  .field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Label styling */
+  .field label {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #FFF0D1;
+    flex: 1; 
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Input, textarea, and file upload styling */
+  .field input,
+  .field textarea,
+  .field select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Ensure that select elements have the same width as input fields */
+  .field select {
+    width: 100%;
+  }
+  
+  /* Ensure input fields and select elements have consistent width */
+  .field input,
+  .field textarea,
+  .field select {
+    flex: 2; 
+  }
+  
+  /* Styling for textarea */
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* File upload styling */
+  .field input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    width: calc(100% - 20px);
+  }
+  .submitButton button {
+    padding: 10px 20px; 
+    color: #3B3030;
+    background-color: #FFF0D1; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 200px;
+    margin: 0 auto; 
+    display: block; 
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    width: auto;
+  }
+  
+  .submitButton:hover button {
+    background-color: #FFF0D1; 
+    color: #594a42;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    background-color: #fcebd6;
+  }
+  
+  /* Error message styling */
+  .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* Age field container styling */
+  .ageFields {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 2;
+  }
+  
+  /* Individual age field styling */
+  .ageField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  
+  /* Add spacing below labels */
+  .ageField label {
+    margin-top: 5px;
+  }
+  
+  /*validation error*/
+  .validationError{
+    color: red;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  /*failed validation makes label red*/
+  .errorLabel{
+    color: red !important; 
+    font-weight: bold;
+  }
+  
+  .loading {
+    margin: 10px 0;
+    color: #FFF0D1;
+  }
