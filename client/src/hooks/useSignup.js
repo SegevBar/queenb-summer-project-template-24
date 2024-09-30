@@ -5,14 +5,14 @@ export const useSignup = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null); //true when we start the request
     const { dispatch } = useAuthContext();
-    const signup = async (email, password) => {
+    const signup = async (email, password, firstName, surname) => {
         setIsLoading(true);
         setError(null);
-
-        const response = await fetch('/api/user/signup', {
+        
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/user/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, firstName, surname })
         }); 
 
         const result = await response.json();

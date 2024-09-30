@@ -10,11 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className={styles.app}>
-        <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
-          <nav className={styles.appNav}>
-            <Link to="/" className={styles.appLink}>Home</Link>
-          </nav>
+        <header className={styles.appHeader}>         
         </header>
         <main className={styles.main}>
           <Routes>
@@ -23,9 +19,6 @@ function App() {
             <Route path="/login" element={<login />} />
           </Routes>
         </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My App</p>
-        </footer>
       </div>
     </BrowserRouter>
   );

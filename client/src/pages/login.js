@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
+import './login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -14,16 +15,21 @@ const Login = () => {
     return  (
         <form className="login" onSubmit={handleSubmit}>
             <h3>Log In</h3>
-            <label>Email</label>
-            <input type="email"
-            onChange={e => setEmail(e.target.value)} //update the email state
-            value={email}
-            />
-            <label>Password</label>
-            <input type="password"
-            onChange={e => setPassword(e.target.value)} //update the password state
-            value={password}
-           />
+            <h5>Don't have an account?</h5>
+            <div className="container">
+                <label className='label-name'>Email</label>
+                <input type="email"
+                onChange={e => setEmail(e.target.value)} //update the email state
+                value={email}
+                />
+            </div>
+            <div className="container">
+                <label className='label-name'>Password</label>
+                <input type="password"
+                onChange={e => setPassword(e.target.value)} //update the password state
+                value={password}
+                />
+           </div>
            <button disabled={isLoading}>Log in</button>
            {error && <div className="error">{error}</div>}
         </form>

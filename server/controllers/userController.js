@@ -7,6 +7,7 @@ const createToken = (id) => {
 
 //login user
 const loginUser = async (req, res) => {
+    console.log('login user');
     const { email, password } = req.body;
 
     try {
@@ -20,6 +21,7 @@ const loginUser = async (req, res) => {
 
 //signup user
 const signupUser = async (req, res) => {
+   console.log('signup user');
     const { email, password, firstName, surname } = req.body;
 
     try {
