@@ -1,10 +1,32 @@
-.home {
-  text-align: center;
+.appHeader {
+  background-color: #282c34;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appNav {
+  display: flex;
+  gap: 20px; /* Space between Home and Upload */
+}
+
+.appLink {
+  color: #61dafb;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.main {
   padding: 20px;
 }
 
-.headline {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #53474F;
+.footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
