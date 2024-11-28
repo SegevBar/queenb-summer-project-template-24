@@ -25,10 +25,10 @@ const getRandomDuck = async (req, res) => {
 
 // get a single duck
 const getSingleDuck = async (req, res) => {
-    const {id} = req.params;
+    const {_id} = req.params;
 
     try {
-        const duck = await RubberDuck.findById(id);
+        const duck = await RubberDuck.findById(_id);
         res.status(200).json({duck});
     } catch (err) {
         res.status(400).json({mssg: 'error getting duck', err})
@@ -49,10 +49,10 @@ const createDuck = async (req, res) => {
 
 // delete a duck
 const deleteDuck = async (req, res) => {
-    const {id} = req.params;
+    const {_id} = req.params;
 
     try {
-        const duck = await RubberDuck.findByIdAndDelete(id);
+        const duck = await RubberDuck.findByIdAndDelete(_id);
         res.status(200).json({duck});
     } catch (err) {
         res.status(400).json({mssg: 'error deleting duck', err})
@@ -61,11 +61,11 @@ const deleteDuck = async (req, res) => {
 
 // update a duck
 const updateDuck = async (req, res) => {
-    const {id} = req.params;
+    const {_id} = req.params;
     const {name, color, squeaks} = req.body;
 
     try {
-        const duck = await RubberDuck.findByIdAndUpdate(id, {name, color, squeaks}, {new: true});
+        const duck = await RubberDuck.findByIdAndUpdate(_id, {name, color, squeaks}, {new: true});
         res.status(200).json({duck});
     } catch (err) {
         res.status(400).json({mssg: 'error updating duck', err})

@@ -1,0 +1,68 @@
+.appLogo {
+    width: 200px;
+    display: block;
+  }
+  
+  .appNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures the logo and menu are on opposite sides */
+    width: 100%;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .appLink {
+    color: #4A69BD;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: fit-content;
+  }
+  
+  .appLink:hover {
+    color: #F0B9B9;
+  }
+
+  .appAuthLinks {
+    color: #2a19ae;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: fit-content;
+  }
+  
+  .appAuthLinks:hover {
+    color: #F0B9B9;
+  }
+
+  
+  .navButton {
+    padding: 10px 20px;
+  }
+
+
+  .logout-button {
+    background-color: transparent; /* No background color */
+    border: 1px solid #f8a6de; /* Light border */
+    color: #666; /* Soft gray text */
+    padding: 10px 20px; /* Some padding */
+    font-size: 16px; /* Font size */
+    cursor: not-allowed; /* Cursor indicates it's not clickable */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.logout-button:hover {
+    color: #f599c4; /* Slightly darker on hover */
+}
+
+.logout-button:disabled {
+    color: #f2bcbc; /* Disabled color */
+    border-color: #eee; /* Lighter border when disabled */
+    cursor: not-allowed; /* Keep the not-allowed cursor */
+}

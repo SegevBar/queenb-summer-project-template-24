@@ -20,3 +20,6 @@ const rubberDuckSchema = new Schema({
 });
 
 module.exports = mongoose.model('RubberDuck', rubberDuckSchema);
+
+
+

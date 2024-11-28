@@ -1,0 +1,77 @@
+.itemDetailContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  max-width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  text-align: left;
+  background-color: rgba(240, 185, 185, 0.2);
+  width: auto;
+  max-width: 2000px;
+  height: auto;
+  border: 3px solid #F0B9B9;
+  border-radius: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.itemImgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+}
+
+.itemImg {
+  max-height: 400px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.itemDet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+  min-height: 400px;
+}
+
+.itemName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4A69BD;
+  margin-bottom: 5px;
+}
+
+.itemPrice {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.itemDescription,
+.itemSize,
+.itemCondition {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.loading,
+.noItem {
+  text-align: center;
+  color: #4A69BD;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.contactBtn {
+  margin-top: 30px;
+}
