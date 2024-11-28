@@ -1,11 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Poppins";
+    color: #594a42;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    
+  }
+
+  .headline {
+    color: #594a42;
   }
   
+
+/* layout */
+body {
+  background: #FFF0D1;
+  margin: 0;
+  font-family: "Poppins";
+}
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* homepage */
+.home {
+  gap: 100px;
+}
+.animal-item {
+  background: #fff;
+  border-radius: 4px;
+  width: 600px; /* Fixed width for consistency */
+  height: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px #594a42;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 10px; /* Space between child elements */
+  align-items: left; /* Align items to the start (left) */
+  text-align: left;
+}
+
+.animal-item h1 {
+  margin: 0 0 20px 0;
+  font-size: 2em;
+  color: #594a42;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Description styling */
+.animal-description {
+  width: 100%; /* Ensure it uses full width */
+  text-align: left; /* Align text to the left */
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center the block within the container */
+}
+
+.animal-description h4 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.3em; /* Set the font size for the heading */
+  color: #594a42; /* Optional: color to match your theme */
+}
+
+.animal-description p {
+  margin: 0; /* Remove default margin */
+  font-size: 1em; /* Set the font size for the description */
+  color: #594a42; /* Optional: color to match your theme */
+  padding-bottom: 10px; /* Add space between text and the line below */
+  text-align: center; /* Align text to the left */
+  width: fit-content; /* Adjusts width based on content */
+  margin-top: 5px; /* Space between the heading and the paragraph */
+}
+.description-line {
+  width: 100%; /* Make the line full width of the container */
+  border: none; /* Remove default border */
+  height: 1px; /* Fixed height for the line */
+  background-color: #ccc; /* Color of the line */
+  margin-top: 10px; /* Space above the line */
+}
+
+.animal-item h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #594a42;
+  font-weight: 600; /* Slightly bold */
+}
+
+.animal-item h5 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  color: #594a42;
+  text-align: left;
+  font-weight: normal;
+}
+
+/* Flex container for details and contact info */
+.details-container {
+  display: flex; /* Enable flexbox for the details layout */
+  justify-content: space-between; /* Space between details and contact */
+  width: 100%; /* Full width of the animal-item */
+  margin-top: flex-start; /* Add space between description and details */
+}

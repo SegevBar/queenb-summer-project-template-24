@@ -1,0 +1,44 @@
+.container {
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px; /* רווח בין הכרטיסיות */
+    flex-wrap: wrap; /* מאפשר לשבור שורה במקרה שיש יותר כרטיסיות */
+    padding: 20px;
+  }
+  
+  .title {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .content {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .animals {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .img {
+    max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+  }
+  
+  .animalName {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  
