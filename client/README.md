@@ -95,7 +95,7 @@ client/
 Create a `.env` file in the client directory and set:
 
 ```env
-VITE_API_URL=http://localhost:5001/api
+VITE_API_URL=/api
 ```
 
 **Note**: With Vite, environment variables must be prefixed with `VITE_` to be accessible in the browser.
